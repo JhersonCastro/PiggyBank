@@ -13,27 +13,33 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\PiggyBank">
+      <UniqueIdentifier>{1f709eb8-76c3-4796-a417-9fc90ef5f93a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\PiggyBankH">
+      <UniqueIdentifier>{6c0e551a-46d5-45a3-9dd9-eb84a9a19006}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="PiggyBank.c">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="StdLib.c">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PiggyBank.c">
+      <Filter>Archivos de origen\PiggyBank</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="variables.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="PiggyBank.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="StdLib.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="PiggyBank.h">
+      <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
