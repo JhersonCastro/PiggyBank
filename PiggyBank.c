@@ -4,6 +4,7 @@
 #include "variables.h"
 #include "PiggyBank.h"
 #include "StdLib.h"
+#include "Funcionalities.h"
 #pragma region Global Variables
 int maxCapacity[] =				{0, 0};
 int currentCapacity[] =			{0, 0};
@@ -25,7 +26,7 @@ void dimensionPiggyBank() {
 		int currentValue = 0;
 		if (isContinue) {
 			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para las monedas)?\nestos son los numeros admitidos: 50, 100, 200, 500, 1000: ");
-			if (!isTheValueInTheNormCoin(currentValue, defaultCoinNorm) || isDuplicateValue(currentCoinNorm, currentValue)) {
+			if (!isTheValueInTheNorm(currentValue, defaultCoinNorm) || isDuplicateValue(currentCoinNorm, currentValue)) {
 				printf("No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default"); i--; continue;
 			}
 			currentCoinNorm[i] = currentValue;
@@ -38,7 +39,7 @@ void dimensionPiggyBank() {
 		int currentValue = 0;
 		if (isContinue) {
 			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para los billetes)?\nestos son los numeros admitidos: 2000, 5000, 10000, 20000, 50000: ");
-			if (!isTheValueInTheNormCoin(currentValue, defaultBillNorm) || isDuplicateValue(currentBillNorm, currentValue)) {
+			if (!isTheValueInTheNorm(currentValue, defaultBillNorm) || isDuplicateValue(currentBillNorm, currentValue)) {
 				printf("No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default"); i--; continue;
 			}
 			currentBillNorm[i] = currentValue;
@@ -49,13 +50,7 @@ void dimensionPiggyBank() {
 	qsort(currentCoinNorm, 5, sizeof(int), compareIntegers);
 	qsort(currentBillNorm, 5, sizeof(int), compareIntegers);
 }
-bool isTheValueInTheNormCoin(int value, int coinNorm[]) {
-	for (int i = 0; i < 5; i++) {
-		if (value == coinNorm[i] && value != 0)
-			return true;
-	}
-	return false;
-}
+
 void printCoinNorm(int money) {
 	printf("La norma es: ");
 	int settingCurrentNorm[5];
@@ -75,7 +70,7 @@ void setValue(int setting) {
 		printCoinNorm(setting);
 		currentValue = getNumber("Pls, tell me what is the number that u want deposite in ur piggy bank:D.\n");
 
-		if (!isTheValueInTheNormCoin(currentValue, currentCoinNorm)) {
+		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
 			printf("\nThe value that u entered cannot be process, 'cause the value dont follow the norm. pls, try again \n");
 			continue;
 		}
@@ -85,24 +80,7 @@ void setValue(int setting) {
 		break;
 	} while (true);
 }
-int minCoinsToMoney(int value) {
-	
-	int currentValue = 0;
-	int coins = 0;
 
-	while (currentValue != value) {
-		int remainingValue = value - currentValue;
-
-		for (int i = 4; i >= 0; i--) {
-			if (currentCoinNorm[i] <= remainingValue && currentCoinNorm[i] != 0) {
-				coins++;
-				currentValue += currentCoinNorm[i];
-				break;
-			}
-		}
-	}
-	return coins;
-}
 /*setting 0 = Coins, setting 1 = Bills*/
 void removeValue(int setting) {
 	int currentValue = 0; 
@@ -110,7 +88,7 @@ void removeValue(int setting) {
 		printf("Dinero total de la alcancia: %d\n", piggyBankMoney);
 		printCoinNorm(setting);
 		currentValue = getNumber("Ingresa el valor que quieres eliminar dentro de la norma.\n");
-		if (!isTheValueInTheNormCoin(currentValue, currentCoinNorm)) {
+		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
 			printf("\nEl valor ingresado no puede ser procesado al no seguir la norma. Por favor, inténtelo de nuevo.\n");
 			continue;
 		}
@@ -118,15 +96,16 @@ void removeValue(int setting) {
 			printf("El valor a extraer %d es mayor al valor total de la alcancia %d", currentValue, piggyBankMoney);
 			continue;
 		}
-		piggyBankMoney -= currentValue;
-		if (maxCapacity[setting] > minCoinsToMoney(piggyBankMoney))
-			currentCapacity[setting] = minCoinsToMoney(piggyBankMoney);
+		
+		if (maxCapacity[setting] > minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney))
+			currentCapacity[setting] = minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney);
 		else {
 			printf("No se puede hacer una conversión con el valor asignado, intenta con otro, o salte de la funcion");
 			if (GetContinue("Deseas continuar en la funcion de extracion? Y/N"))
 				continue;
 			break;
 		}
+		piggyBankMoney -= currentValue;
 		printf("\nValor removido correctamente.\n");
 		break;
 	} while (true);

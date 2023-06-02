@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Funcionalities.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="PiggyBank.c" />
     <ClCompile Include="StdLib.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Funcionalities.h" />
     <ClInclude Include="PiggyBank.h" />
     <ClInclude Include="StdLib.h" />
     <ClInclude Include="variables.h" />
