@@ -40,6 +40,7 @@ float getNumber(char* prmEtiqueta) {
 		else
 			break;
 	}
+	printf("\n");
 	return varNumber;
 }
 int compareIntegers(const void* a, const void* b) {

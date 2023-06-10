@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "csv.h"
 #include "PiggyBank.h"
 #include "StdLib.h"
 #include "Funcionalities.h"
@@ -18,25 +19,37 @@ int countMoneyNorm[2][5] =	{
 								/*Bills*/	{ 0, 0, 0, 0, 0 }
 							};
 int Coin = 0, Bill = 1;
+row_t rows[MAX_ROWS];
+static int row_count;
+
+static char* lang = "es";
 #pragma endregion
 #pragma region ModifyPiggyBank
 void printCoinNorm(int money);
 int getCurrentPosition(int setting, int value); 
-void dimensionPiggyBank() {
-	printf("Creacion de la alcancia\n");
-
-	maxCapacity[Coin] = getNumber("¿Cuánta capacidad (de monedas) le quieres dar a la alcancia?: ");
-	maxCapacity[Bill] = getNumber("¿Cuánta capacidad (de billetes) le quieres dar a la alcancia?: ");
+void dimensionPiggyBank(char* language) {
+	lang = language;
+	row_count = read_csv("trans.csv", rows);
+	printf("%s\n", get_text(find_row_by_id(rows, row_count, "piggy_bank_creation"), lang));
+	printf("%s", get_text(find_row_by_id(rows, row_count, "coin_capacity"), lang));
+	maxCapacity[Coin] = getNumber(" ");
+	printf("%s:", get_text(find_row_by_id(rows, row_count, "bill_capacity"), lang));
+	maxCapacity[Bill] = getNumber(" ");
+	
 	bool isContinue = true;
 	for (int i = 0; i < 5; i++) {
 		int currentValue = 0;
 		if (isContinue) {
-			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para las monedas)?\nestos son los numeros admitidos: 50, 100, 200, 500, 1000: ");
+			printf("%s", get_text(find_row_by_id(rows, row_count, "coin_denominations"), lang));
+			printf("%s", get_text(find_row_by_id(rows, row_count, "accepted_numbers"), lang));
+			currentValue = getNumber("");
 			if (!isTheValueInTheNorm(currentValue, defaultCoinNorm) || isDuplicateValue(currentCoinNorm, currentValue)) {
-				printf("No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default"); i--; continue;
+				printf("%s", get_text(find_row_by_id(rows, row_count, "no_duplicates"), lang));
+				i--; 
+				continue;
 			}
 			currentCoinNorm[i] = currentValue;
-			isContinue = GetContinue("¿Quieres seguir? Y/N");
+			isContinue = GetContinue(get_text(find_row_by_id(rows, row_count, "continue_prompt"), lang));
 		}
 		currentCoinNorm[i] = currentValue;
 	}
@@ -44,12 +57,15 @@ void dimensionPiggyBank() {
 	for (int i = 0; i < 5; i++) {
 		int currentValue = 0;
 		if (isContinue) {
-			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para los billetes)?\nestos son los numeros admitidos: 2000, 5000, 10000, 20000, 50000: ");
+			printf("%s\n", get_text(find_row_by_id(rows, row_count, "bill_denominations"), lang));
+			currentValue = getNumber("");
 			if (!isTheValueInTheNorm(currentValue, defaultBillNorm) || isDuplicateValue(currentBillNorm, currentValue)) {
-				printf("No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default"); i--; continue;
+				printf(get_text(find_row_by_id(rows, row_count, "no_duplicates"), lang)); 
+				i--; 
+				continue;
 			}
 			currentBillNorm[i] = currentValue;
-			isContinue = GetContinue("¿Quieres seguir? Y/N");
+			isContinue = GetContinue(get_text(find_row_by_id(rows, row_count, "continue_prompt"), lang));
 		}
 		currentBillNorm[i] = currentValue;
 	}
@@ -60,32 +76,36 @@ void setValue(int setting) {
 	int currentValue = 0;
 	do {
 		printCoinNorm(setting);
-		currentValue = getNumber("Pls, tell me what is the number that u want deposite in ur piggy bank:D.\n");
+		currentValue = getNumber(get_text(find_row_by_id(rows, row_count, "deposit_prompt"), lang));
 
 		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
-			printf("\nThe value that u entered cannot be process, 'cause the value dont follow the norm. pls, try again \n");
+			printf("\n%s \n", get_text(find_row_by_id(rows, row_count, "invalid_value_error_2"),lang));
 			continue;
 		}
 		piggyBankMoney += currentValue;
 		piggyBankMoneyByDiv[setting] += currentValue;
 		currentCapacity[setting]++;
 		countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]++;
-		printf("\nValue entered successfully .\n");
+		printf("\n%s\n", get_text(find_row_by_id(rows, row_count, "successful_entry"), lang));
 		break;
 	} while (true);
 }
 void removeValue(int setting) {
 	int currentValue = 0;
 	do {
-		printf("Dinero total de la alcancia: %d\n", piggyBankMoney);
+		printf("%s %d\n", get_text(find_row_by_id(rows, row_count, "total_money"), lang),piggyBankMoney);
 		printCoinNorm(setting);
-		currentValue = getNumber("Ingresa el valor que quieres eliminar dentro de la norma.\n");
+		currentValue = getNumber(get_text(find_row_by_id(rows, row_count, "enter_value"), lang));
 		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
-			printf("\nEl valor ingresado no puede ser procesado al no seguir la norma. Por favor, inténtelo de nuevo.\n");
+			printf("\n%s\n", get_text(find_row_by_id(rows, row_count, "invalid_value_error_2"), lang));
 			continue;
 		}
 		if (piggyBankMoney < currentValue) {
-			printf("El valor a extraer %d es mayor al valor total de la alcancia %d", currentValue, piggyBankMoney);
+			printf("%s %d %s %d", 
+				get_text(find_row_by_id(rows, row_count, "extraction_value"), lang), 
+				currentValue, 
+				get_text(find_row_by_id(rows, row_count, "greater_than_total"), lang),
+				piggyBankMoney);
 			continue;
 		}
 		int* result = min_combination(currentCoinNorm, currentBillNorm, (piggyBankMoney - currentValue));
@@ -98,8 +118,8 @@ void removeValue(int setting) {
 		}
 		else {
 
-			printf("No se puede hacer una conversión con el valor asignado, intenta con otro, o salte de la funcion");
-			if (GetContinue("Deseas continuar en la funcion de extracion? Y/N"))
+			printf("%s\n", get_text(find_row_by_id(rows, row_count, "conversion_error"), lang));
+			if (GetContinue(get_text(find_row_by_id(rows, row_count, "continue_extraction"), lang)))
 				continue;
 			break;
 		}
@@ -116,7 +136,7 @@ void removeValue(int setting) {
 			= countMoneyNorm[setting][getCurrentPosition(setting, currentValue)] == 0
 			? 0 : countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]--;
 
-		printf("\nValor removido correctamente.\n");
+		printf("\n%s\n", get_text(find_row_by_id(rows, row_count, "value_removed"), lang));
 		break;
 	} while (true);
 }
@@ -131,7 +151,7 @@ int getCurrentPosition(int setting, int value) {
 	return;
 }
 void printCoinNorm(int money) {
-	printf("La norma es: ");
+	printf(get_text(find_row_by_id(rows, row_count, "standard"), lang));
 	int settingCurrentNorm[5];
 	for (int i = 0; i < sizeof(currentCoinNorm) / sizeof(currentCoinNorm[0]); i++)
 	{
@@ -144,28 +164,54 @@ void printCoinNorm(int money) {
 }
 void printCountByCoinDenomination(int setting) {
 	for (int i = 0; i < 5; i++)
-		printf("\nHay %d %s de %d \n", countMoneyNorm[setting][i], setting == Coin ? "monedas" : "billetes", setting == Coin ? defaultCoinNorm[i] : defaultBillNorm[i]);
+		printf("\n%s %d %s %s %d \n", 
+			get_text(find_row_by_id(rows, row_count, "there_are"), lang),
+			countMoneyNorm[setting][i], setting == Coin ? 
+			get_text(find_row_by_id(rows, row_count, "coins"), lang) : 
+			get_text(find_row_by_id(rows, row_count, "bills"), lang),
+			get_text(find_row_by_id(rows, row_count, "of"), lang),
+			setting == Coin ? defaultCoinNorm[i] : defaultBillNorm[i]);
 }
 void printStats(int setting) {
 	switch (setting)
 	{
 	case 0:
-		printf("El dinero total en la alcancia es de %d\nLas monedas ingresadas es de: %d\nLas capacidad total de monedas es de:%d\nEl restante de las monedas es de: %d\n",
-			piggyBankMoney, currentCapacity[Coin], maxCapacity[Coin], (maxCapacity[Coin] - currentCapacity[Coin]));
+		printf("%s %d\n%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "total_money"), lang),
+			piggyBankMoney,
+			get_text(find_row_by_id(rows, row_count, "coins_entered"), lang),
+			currentCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "total_coin_capacity"), lang),
+			maxCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "remaining_coins"), lang),
+			(maxCapacity[Coin] - currentCapacity[Coin]));
 
-		printf("Los billetes ingresados es de: %d\nLas capacidad total de billetes es de:%d\nEl restante de los monedas es de: %d\n",
-			currentCapacity[Bill], maxCapacity[Bill], (maxCapacity[Bill] - currentCapacity[Bill]));
 
-		printf("El saldo por denominacion de monedas es de: %i\n",piggyBankMoneyByDiv[Coin]);
+		printf("%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "bills_entered"), lang),
+			currentCapacity[Bill], 
+			get_text(find_row_by_id(rows, row_count, "total_bill_capacity"), lang),
+			maxCapacity[Bill],
+			get_text(find_row_by_id(rows, row_count, "remaining_bills"), lang),
+			(maxCapacity[Bill] - currentCapacity[Bill]));
 
-		printf("El saldo por denominacion de billetes es de: %i\n", piggyBankMoneyByDiv[Bill]);
+		printf("%s %i\n",
+			get_text(find_row_by_id(rows, row_count, "coin_balance"), lang),
+			piggyBankMoneyByDiv[Coin]);
+
+		printf("%s %i\n", 
+			get_text(find_row_by_id(rows, row_count, "balance_by_denomination"), lang),
+			piggyBankMoneyByDiv[Bill]);
 		printCountByCoinDenomination(Coin);
 		printCountByCoinDenomination(Bill);
 		break;
 	case 1:
 	case 3:
-		printf("El saldo por denominacion de %s es de: %i",
-			setting == 1 ? "monedas" : "billetes",
+		printf("%s %s %s %i",
+			get_text(find_row_by_id(rows, row_count, "balance_by_denomination"), lang),
+			setting == 1 ? get_text(find_row_by_id(rows, row_count, "coins"), lang) : 
+			get_text(find_row_by_id(rows, row_count, "bills"), lang),
+			get_text(find_row_by_id(rows, row_count, "is_of"), lang),
 			piggyBankMoneyByDiv[setting == 1 ? Coin : Bill]);
 		break;
 	case 2:
