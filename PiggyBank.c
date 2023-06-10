@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 #include "variables.h"
 #include "PiggyBank.h"
 #include "StdLib.h"
@@ -23,7 +24,7 @@ void dimensionPiggyBank() {
 	maxCapacity[Bill] = getNumber("¿Cuánta capacidad (de billetes) le quieres dar a la alcancia?: ");
 	bool isContinue = true;
 	for (int i = 0; i < 5; i++) {
-		int currentValue = 0;
+		int currentValue = INT_MIN;
 		if (isContinue) {
 			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para las monedas)?\nestos son los numeros admitidos: 50, 100, 200, 500, 1000: ");
 			if (!isTheValueInTheNorm(currentValue, defaultCoinNorm) || isDuplicateValue(currentCoinNorm, currentValue)) {
@@ -36,7 +37,7 @@ void dimensionPiggyBank() {
 	}
 	isContinue = true;
 	for (int i = 0; i < 5; i++) {
-		int currentValue = 0;
+		int currentValue = INT_MIN;
 		if (isContinue) {
 			currentValue = getNumber("¿Cuáles son las demoninaciones que deseas (Para los billetes)?\nestos son los numeros admitidos: 2000, 5000, 10000, 20000, 50000: ");
 			if (!isTheValueInTheNorm(currentValue, defaultBillNorm) || isDuplicateValue(currentBillNorm, currentValue)) {
@@ -96,10 +97,16 @@ void removeValue(int setting) {
 			printf("El valor a extraer %d es mayor al valor total de la alcancia %d", currentValue, piggyBankMoney);
 			continue;
 		}
-		
-		if (maxCapacity[setting] > minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney))
-			currentCapacity[setting] = minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney);
+		int* result = min_combination(currentCoinNorm, currentBillNorm, (piggyBankMoney - currentValue));
+		/*if (maxCapacity[setting] > minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney))
+			currentCapacity[setting] = minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney);*/
+		if (maxCapacity[0] > result[0] && maxCapacity[1] > result[1])
+		{
+			currentCapacity[0] = result[0];
+			currentCapacity[1] = result[1];
+		}
 		else {
+			
 			printf("No se puede hacer una conversión con el valor asignado, intenta con otro, o salte de la funcion");
 			if (GetContinue("Deseas continuar en la funcion de extracion? Y/N"))
 				continue;
@@ -141,10 +148,10 @@ void piggyBank() {
 			setValue(Bill);
 		break;
 	case 4:
-		if (currentCapacity[Coin] == 0)
+		if (currentCapacity[Bill] == 0)
 			printf("¡Agrega algunas monedas!, la alcancia esta vacia");
 		else
-			removeValue(Coin);
+			removeValue(Bill);
 		break;
 	#pragma endregion
 	case 5:

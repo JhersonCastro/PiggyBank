@@ -1,3 +1,3 @@
 #pragma once
 bool isTheValueInTheNorm(int value, int Norm[]);
-int minValueToMoney(int currentNorm[], int value);
+int* min_combination(int coins[], int bills[], int value);
