@@ -218,7 +218,44 @@ void printStats(int setting) {
 	case 4:
 		printCountByCoinDenomination(setting == 2 ? Coin : Bill);
 		break;
-
+	case 5:
+		printf("%s %d\n%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "total_money"), lang),
+			piggyBankMoney,
+			get_text(find_row_by_id(rows, row_count, "coins_entered"), lang),
+			currentCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "total_coin_capacity"), lang),
+			maxCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "remaining_coins"), lang),
+			(maxCapacity[Coin] - currentCapacity[Coin]));
+		printf("%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "bills_entered"), lang),
+			currentCapacity[Bill],
+			get_text(find_row_by_id(rows, row_count, "total_bill_capacity"), lang),
+			maxCapacity[Bill],
+			get_text(find_row_by_id(rows, row_count, "remaining_bills"), lang),
+			(maxCapacity[Bill] - currentCapacity[Bill]));
+		break;
+	case 6:
+		printf("%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "bills_entered"), lang),
+			currentCapacity[Bill],
+			get_text(find_row_by_id(rows, row_count, "total_bill_capacity"), lang),
+			maxCapacity[Bill],
+			get_text(find_row_by_id(rows, row_count, "remaining_bills"), lang),
+			(maxCapacity[Bill] - currentCapacity[Bill]));
+		break;
+	case 7:
+		printf("%s %d\n%s %d\n%s%d\n%s %d\n",
+			get_text(find_row_by_id(rows, row_count, "total_money"), lang),
+			piggyBankMoney,
+			get_text(find_row_by_id(rows, row_count, "coins_entered"), lang),
+			currentCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "total_coin_capacity"), lang),
+			maxCapacity[Coin],
+			get_text(find_row_by_id(rows, row_count, "remaining_coins"), lang),
+			(maxCapacity[Coin] - currentCapacity[Coin]));
+		break;
 	default:
 		break;
 	}
