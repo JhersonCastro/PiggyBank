@@ -1,12 +1,6 @@
-#include <stdbool.h>
-#include "PiggyBank.h"
-#include "StdLib.h"
-
+#include "Menu.h"
 
 int main(void) {
-	dimensionPiggyBank();
-	do {
-		piggyBank();
-	} while (GetContinue("Do u want continue? Y/N"));
+	piggyBank();
 	return 0;
 }

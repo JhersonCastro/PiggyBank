@@ -33,11 +33,11 @@
     <ClCompile Include="Funcionalities.c">
       <Filter>Archivos de origen\PiggyBank</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.c">
+      <Filter>Archivos de origen\PiggyBank</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="variables.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="StdLib.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -45,6 +45,9 @@
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
     <ClInclude Include="Funcionalities.h">
+      <Filter>Archivos de encabezado\PiggyBankH</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
   </ItemGroup>
