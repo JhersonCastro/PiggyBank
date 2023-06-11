@@ -173,7 +173,8 @@ void printCountByCoinDenomination(int setting) {
 			setting == Coin ? defaultCoinNorm[i] : defaultBillNorm[i]);
 }
 void printStats(int setting) {
-	switch (setting)
+	
+switch (setting)
 	{
 	case 0:
 		printf("%s %d\n%s %d\n%s%d\n%s %d\n",
@@ -260,5 +261,6 @@ void printStats(int setting) {
 		break;
 	}
 	printf("\n");
+	system("clear");
 }
 #pragma endregion

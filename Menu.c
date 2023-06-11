@@ -3,7 +3,8 @@
 #include "PiggyBank.h"
 #define NUM_OPTIONS 3
 static char* lang = "es";
-
+row_t rows[MAX_ROWS];
+static int row_count;
 
 typedef void (*func_ptr)(int);
 func_ptr menu[NUM_OPTIONS] = {	setValue,
@@ -11,8 +12,7 @@ func_ptr menu[NUM_OPTIONS] = {	setValue,
 								printStats};
 
 void printMenu() {
-	row_t rows[MAX_ROWS];
-	int row_count = read_csv("trans.csv", rows);
+	row_count = read_csv("trans.csv", rows);
 	char* MenuItems[] = { 
 		get_text(find_row_by_id(rows, row_count, "enter_coin"), lang),
 		get_text(find_row_by_id(rows, row_count, "enter_bill"), lang),
@@ -37,7 +37,7 @@ void piggyBank(char* language){
 	do
 	{
 		printMenu();
-		opc = getNumber("¿Cuál opcion quieres elegir?: ");
+		opc = getNumber(get_text(find_row_by_id(rows, row_count, "option_choice"), lang));
 		if (opc == 1 || opc == 2)
 			menu[0](opc == 1 ? 0 : 1);
 		else if (opc == 3 || opc == 4)
@@ -45,8 +45,8 @@ void piggyBank(char* language){
 		else if (opc >= 5 && opc <= 12)
 			menu[2](opc - 5);
 		else
-			printf("¡Número ingresado no válido!");
+			printf("%s", get_text(find_row_by_id(rows, row_count, "invalid_number"), lang));
 	} while (opc != 13);
 
-	printf("Jajaja el numero chistoso");
+	printf("%s", get_text(find_row_by_id(rows, row_count, "funny_number"), lang));
 }

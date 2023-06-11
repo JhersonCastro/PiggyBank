@@ -53,17 +53,11 @@
     <ClInclude Include="Menu.h">
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="csv.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Translations.csv">
-      <Filter>Archivos de recursos</Filter>
-    </None>
     <None Include="trans.csv">
       <Filter>Archivos de recursos</Filter>
     </None>

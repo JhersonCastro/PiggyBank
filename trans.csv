@@ -2,7 +2,7 @@ id,es,en
 coin_capacity,¿Cuánta capacidad (de monedas) le quieres dar a la alcancia?:,How much capacity (for coins) do you want to give the piggy bank?:
 bill_capacity,¿Cuánta capacidad (de billetes) le quieres dar a la alcancia?:,How much capacity (for bills) do you want to give the piggy bank?:
 coin_denominations,¿Cuáles son las demoninaciones que deseas (Para las monedas)?,What denominations do you want (for coins)?
-accepted_numbers,estos son los numeros admitidos: 50, 100, 200, 500, 1000:,these are the accepted numbers: 50, 100, 200, 500, 1000:
+accepted_numbers,estos son los numeros admitidos: 50. 100. 200. 500. 1000:,these are the accepted numbers: 50. 100. 200. 500. 1000:
 piggy_bank_creation,Creacion de la alcancia,Piggy bank creation
 no_duplicates,No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default,No duplicate amounts are allowed, nor amounts that are not in the default standard
 continue_prompt,¿Quieres seguir? Y/N,Do you want to continue? Y/N
@@ -29,7 +29,7 @@ total_coin_capacity,Las capacidad total de monedas es de:,The total coin capacit
 remaining_coins,El restante de las monedas es de:,The remaining coins are:
 bills_entered,Los billetes ingresados es de:,The bills entered is:
 total_bill_capacity,Las capacidad total de billetes es de:,The total bill capacity is:
-remaining_bills,El restante de los monedas es de:,The remaining bills are:
+remaining_bills,El restante de los billetes es de:,The remaining bills are:
 coin_balance,El saldo por denominacion de monedas es de:,The balance by denomination of coins is:
 balance_by_denomination,El saldo por denominacion de ,The balance by denomination of 
 is_of,es de:,is:
@@ -48,3 +48,6 @@ inventories,10. Existencias,10. Inventories
 bill_inventories,11. Existencias de Billetes.,11. Bill Inventories.
 coin_inventories,12. Existencias de Monedas.,12. Coin Inventories.
 exit_option,13. Salir,13. Exit
+option_choice,¿Cuál opción quieres elegir?:,Which option do you want to choose?: 
+invalid_number,¡Número ingresado no válido!,Invalid number entered! 
+funny_number,Jajaja el número chistoso,Haha the funny number

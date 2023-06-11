@@ -8,31 +8,31 @@ int main(void) {
     piggyBank(setLanguage());
     return 0;
 }
-char* setLanguage() {
+char* setLanguage() { 
         char str[10];
         printf("Enter language (es/en): ");
-        fgets(str, 10, stdin);
+        do
+        {
+            fgets(str, 10, stdin);
 
-        char* start = str;
-        while (isspace(*start)) {
-            start++;
-        }
-        char* end = start + strlen(start) - 1;
-        while (end >= start && isspace(*end)) {
-            end--;
-        }
-
-        // Check if input is "es" or "en"
-        if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 's') {
-            printf("Language set to Spanish\n");
-            return "es";
-        }
-        else if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 'n') {
-            printf("Language set to English\n");
-            return "en";
-        }
-        else {
-            printf("Invalid language\n");
-            return "es";
-        }
+            char* start = str;
+            while (isspace(*start)) {
+                start++;
+            }
+            char* end = start + strlen(start) - 1;
+            while (end >= start && isspace(*end)) {
+                end--;
+            }
+            if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 's') {
+                printf("Idioma puesto al castellano\n");
+                return "es";
+            }
+            else if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 'n') {
+                printf("Language set to English\n");
+                return "en";
+            }
+            else {
+                printf("Invalid language, please try again\n");
+            }
+        } while (1);
 }
