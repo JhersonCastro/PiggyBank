@@ -19,6 +19,12 @@
     <Filter Include="Archivos de encabezado\PiggyBankH">
       <UniqueIdentifier>{6c0e551a-46d5-45a3-9dd9-eb84a9a19006}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\EditFiles">
+      <UniqueIdentifier>{cde97357-9ac0-460b-8092-34e6e68f54c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\EditFiles">
+      <UniqueIdentifier>{336d94e7-df93-4c8a-93fb-ad0c0b660557}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c">
@@ -37,7 +43,10 @@
       <Filter>Archivos de origen\PiggyBank</Filter>
     </ClCompile>
     <ClCompile Include="csv.c">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\EditFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="data.c">
+      <Filter>Archivos de origen\EditFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,12 +63,20 @@
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
     <ClInclude Include="csv.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\EditFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="data.h">
+      <Filter>Archivos de encabezado\EditFiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="trans.csv">
       <Filter>Archivos de recursos</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.csv">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
   </ItemGroup>
 </Project>

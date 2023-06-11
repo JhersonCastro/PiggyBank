@@ -4,6 +4,7 @@
 #include "csv.h"
 #include "PiggyBank.h"
 #include "StdLib.h"
+#include "data.h"
 #include "Funcionalities.h"
 #pragma region Global Variables
 int maxCapacity[]			=			{0, 0};
@@ -21,12 +22,12 @@ int countMoneyNorm[2][5] =	{
 int Coin = 0, Bill = 1;
 row_t rows[MAX_ROWS];
 static int row_count;
-
 static char* lang = "es";
 #pragma endregion
 #pragma region ModifyPiggyBank
 void printCoinNorm(int money);
 int getCurrentPosition(int setting, int value); 
+void setOlderData();
 void dimensionPiggyBank(char* language) {
 	lang = language;
 	row_count = read_csv("trans.csv", rows);
@@ -35,7 +36,7 @@ void dimensionPiggyBank(char* language) {
 	maxCapacity[Coin] = getNumber(" ");
 	printf("%s:", get_text(find_row_by_id(rows, row_count, "bill_capacity"), lang));
 	maxCapacity[Bill] = getNumber(" ");
-	
+
 	bool isContinue = true;
 	for (int i = 0; i < 5; i++) {
 		int currentValue = 0;
@@ -45,7 +46,7 @@ void dimensionPiggyBank(char* language) {
 			currentValue = getNumber("");
 			if (!isTheValueInTheNorm(currentValue, defaultCoinNorm) || isDuplicateValue(currentCoinNorm, currentValue)) {
 				printf("%s", get_text(find_row_by_id(rows, row_count, "no_duplicates"), lang));
-				i--; 
+				i--;
 				continue;
 			}
 			currentCoinNorm[i] = currentValue;
@@ -60,8 +61,8 @@ void dimensionPiggyBank(char* language) {
 			printf("%s\n", get_text(find_row_by_id(rows, row_count, "bill_denominations"), lang));
 			currentValue = getNumber("");
 			if (!isTheValueInTheNorm(currentValue, defaultBillNorm) || isDuplicateValue(currentBillNorm, currentValue)) {
-				printf(get_text(find_row_by_id(rows, row_count, "no_duplicates"), lang)); 
-				i--; 
+				printf(get_text(find_row_by_id(rows, row_count, "no_duplicates"), lang));
+				i--;
 				continue;
 			}
 			currentBillNorm[i] = currentValue;
@@ -142,6 +143,9 @@ void removeValue(int setting) {
 }
 #pragma endregion
 #pragma region Styles
+void setOlderData() {
+
+}
 int getCurrentPosition(int setting, int value) {
 	for (int i = 0; i < 5; i++)
 	{
