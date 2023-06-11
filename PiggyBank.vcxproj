@@ -142,6 +142,7 @@
     <ClInclude Include="StdLib.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data.csv" />
     <None Include="trans.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
