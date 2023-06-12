@@ -3,10 +3,11 @@ coin_capacity,¿Cuánta capacidad (de monedas) le quieres dar a la alcancia?:,How 
 bill_capacity,¿Cuánta capacidad (de billetes) le quieres dar a la alcancia?:,How much capacity (for bills) do you want to give the piggy bank?:
 coin_denominations,¿Cuáles son las demoninaciones que deseas (Para las monedas)?,What denominations do you want (for coins)?
 accepted_numbers,estos son los numeros admitidos: 50. 100. 200. 500. 1000:,these are the accepted numbers: 50. 100. 200. 500. 1000:
+bill_denominations,¿Cuáles son las demoninaciones que deseas (Para los billetes)?,What denominations do you want (for bills)?
+accepted_bill_numbers,estos son los numeros admitidos: 2000. 5000. 10000. 20000. 50000:,these are the accepted numbers: 2000. 5000. 10000. 20000. 50000:
 piggy_bank_creation,Creacion de la alcancia,Piggy bank creation
 no_duplicates,No se permiten cantidades duplicadas, tampoco cantidades que no estan en la norma default,No duplicate amounts are allowed, nor amounts that are not in the default standard
 continue_prompt,¿Quieres seguir? Y/N,Do you want to continue? Y/N
-bill_denominations,¿Cuáles son las demoninaciones que deseas (Para los billetes)? estos son los numeros admitidos: 2000. 5000. 10000. 20000. 50000:,What denominations do you want (for bills)? these are the accepted numbers: 2000. 5000. 10000. 20000. 50000:
 deposit_prompt,Por favor, dime cuál es el numero que tu quieres depositar en tu alcancia:,Please tell me which number you want to deposit in your piggy bank:
 invalid_value_error,El valor que enviaste no puede ser procesado, debido a que no seguiste la norma, intentalo de nuevo ,The value you sent cannot be processed because you did not follow the standard, try again
 successful_entry,Valor ingrersado satisfactoriamente,Value entered successfully

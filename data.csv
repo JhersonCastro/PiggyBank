@@ -16,3 +16,13 @@ bills_entered[1],0
 bills_entered[2],0
 bills_entered[3],0
 bills_entered[4],0
+currentCoinNorm[0],0
+currentCoinNorm[1],0
+currentCoinNorm[2],0
+currentCoinNorm[3],0
+currentCoinNorm[4],0
+currentBillNorm[0],0
+currentBillNorm[1],0
+currentBillNorm[2],0
+currentBillNorm[3],0
+currentBillNorm[4],0

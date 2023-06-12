@@ -22,12 +22,13 @@ void printMenu() {
 		get_text(find_row_by_id(transRows, transRowCount, "coin_balances_by_denomination"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "coin_counts_by_denomination"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "bill_balances_by_denomination"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "bill_counts_by_denomination"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "inventories"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "bill_inventories"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "coin_inventories"), lang),
 		get_text(find_row_by_id(transRows, transRowCount, "exit_option"), lang),
 							};
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 13; i++)
 		printf("%s\n", MenuItems[i]);
 }
 void piggyBank(char* language){
