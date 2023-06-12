@@ -51,8 +51,8 @@ int* min_combination(int coins[], int bills[], int value) {
     free(coin_used);
 
     return result;
-}
-/*int minValueToMoney(int currentNorm[], int value) {
+}/*
+int minValueToMoney(int currentNorm[], int value) {
 
 	int currentValue = 0;
 int coins = 0;

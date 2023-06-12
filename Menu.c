@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "data.h"
+#include "csv.h"
 #include "PiggyBank.h"
 #define NUM_OPTIONS 3
 static char* lang = "es";
@@ -30,8 +30,8 @@ void printMenu() {
 	for (int i = 0; i < 12; i++)
 		printf("%s\n", MenuItems[i]);
 }
-void piggyBank(){
-	lang = setLanguage();
+void piggyBank(char* language){
+	lang = language;
 	dimensionPiggyBank(lang);
 	int opc = 0;
 	do

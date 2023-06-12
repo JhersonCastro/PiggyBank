@@ -1,9 +1,7 @@
-#include "data.h"
+#include "csv.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-
 const char* transFilename = "trans.csv";
 const char* dataFilename = "data.csv";
 #pragma region translations
@@ -44,34 +42,7 @@ const char* get_text(row_t* row, const char* lang) {
         return NULL;
     }
 }
-char* setLanguage() {
-    char str[10];
-    printf("Enter language (es/en): ");
-    do
-    {
-        fgets(str, 10, stdin);
 
-        char* start = str;
-        while (isspace(*start)) {
-            start++;
-        }
-        char* end = start + strlen(start) - 1;
-        while (end >= start && isspace(*end)) {
-            end--;
-        }
-        if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 's') {
-            printf("Idioma puesto al castellano\n");
-            return "es";
-        }
-        else if (end - start == 1 && tolower(start[0]) == 'e' && tolower(start[1]) == 'n') {
-            printf("Language set to English\n");
-            return "en";
-        }
-        else {
-            printf("Invalid language, please try again\n");
-        }
-    } while (1);
-}
 #pragma endregion
 #pragma region data
 int readData_csv(row_d* rows) {
