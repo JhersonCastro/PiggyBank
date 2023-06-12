@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "csv.h"
+#include <limits.h>
+#include "data.h"
 #include "PiggyBank.h"
 #include "StdLib.h"
 #include "Funcionalities.h"
@@ -56,6 +57,11 @@ void dimensionPiggyBank(char* language) {
 				countMoneyNorm[Coin][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
 				sprintf_s(cadena, sizeof(cadena), "bills_entered[%d]", i);
 				countMoneyNorm[Bill][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
+
+				sprintf_s(cadena, sizeof(cadena), "currentCoinNorm[%d]", i);
+				currentCoinNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
+				sprintf_s(cadena, sizeof(cadena), "currentBillNorm[%d]", i);
+				currentBillNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
 			}
 			printf("\nLos valores se restablecieron correctamente!\n");
 		}
@@ -67,6 +73,8 @@ void dimensionPiggyBank(char* language) {
 	else
 		piggyBankCreator();
 	editByID("is_a_new_piggybank","true");
+	qsort(currentCoinNorm, 5, sizeof(int), compareIntegers);
+	qsort(currentBillNorm, 5, sizeof(int), compareIntegers);
 }
 void resetPiggyBank() {
 	editByID("money", "0");
@@ -89,16 +97,34 @@ void resetPiggyBank() {
 }
 void piggyBankCreator() {
 	char cadena[50];
+	char valor[50];
 	printf("%s\n", get_text(find_row_by_id(transRows, transRowCount, "piggy_bank_creation"), lang));
 	printf("%s", get_text(find_row_by_id(transRows, transRowCount, "coin_capacity"), lang));
+	int buffer = 0;
+	do
+	{
+		buffer = getNumber(" ");
+		if (buffer >= 0 && buffer < INT_MAX) {
+			maxCapacity[Coin] = buffer;
+			break;
+		}
+		printf("Haz introducido un numero negativo o fue un numero mayor al maximo permitido (%i)", INT_MAX);
+	} while (true);
 	
-	maxCapacity[Coin] = getNumber(" ");
 	sprintf_s(cadena, sizeof(cadena), "%d", maxCapacity[Coin]);
 	editByID("max_coin_capacity", cadena);
 
 	printf("%s:", get_text(find_row_by_id(transRows, transRowCount, "bill_capacity"), lang));
 
-	maxCapacity[Bill] = getNumber(" ");
+	do
+	{
+		buffer = getNumber(" ");
+		if (buffer >= 0 && buffer < INT_MAX) {
+			maxCapacity[Bill] = buffer;
+			break;
+		}
+		printf("Haz introducido un numero negativo o fue un numero mayor al maximo permitido (%i)", INT_MAX);
+	} while (true);
 	sprintf_s(cadena, sizeof(cadena), "%d", maxCapacity[Bill]);
 	editByID("max_bill_capacity", cadena);
 
@@ -118,6 +144,10 @@ void piggyBankCreator() {
 			isContinue = GetContinue(get_text(find_row_by_id(transRows, transRowCount, "continue_prompt"), lang));
 		}
 		currentCoinNorm[i] = currentValue;
+
+		sprintf_s(cadena, sizeof(cadena), "currentCoinNorm[%d]", i);
+		sprintf_s(valor, sizeof(valor), "%d", currentValue);
+		editByID(cadena, valor);
 	}
 	isContinue = true;
 	for (int i = 0; i < 5; i++) {
@@ -134,9 +164,11 @@ void piggyBankCreator() {
 			isContinue = GetContinue(get_text(find_row_by_id(transRows, transRowCount, "continue_prompt"), lang));
 		}
 		currentBillNorm[i] = currentValue;
+
+		sprintf_s(cadena, sizeof(cadena), "currentBillNorm[%d]", i);
+		sprintf_s(valor, sizeof(valor), "%d", currentValue);
+		editByID(cadena, valor);
 	}
-	qsort(currentCoinNorm, 5, sizeof(int), compareIntegers);
-	qsort(currentBillNorm, 5, sizeof(int), compareIntegers);
 }
 void setValue(int setting) {
 	int currentValue = 0;

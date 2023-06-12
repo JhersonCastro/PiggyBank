@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="csv.c" />
+    <ClCompile Include="data.c" />
     <ClCompile Include="Funcionalities.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Menu.c" />
@@ -135,7 +135,7 @@
     <ClCompile Include="StdLib.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="csv.h" />
+    <ClInclude Include="data.h" />
     <ClInclude Include="Funcionalities.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PiggyBank.h" />

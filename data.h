@@ -15,7 +15,7 @@ typedef struct {
 int readTrans_csv(row_t* rows);
 row_t* find_row_by_id(row_t* rows, int row_count, const char* id);
 const char* get_text(row_t* row, const char* lang);
-
+char* setLanguage();
 void editByID(char* id_buscado, char* nuevo_valor);
 int readData_csv(row_d* rows);
 int searchByID(row_d* rows, int lenght, char* id);

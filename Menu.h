@@ -1,2 +1,2 @@
 #pragma once
-void piggyBank(char* language);
+void piggyBank();
