@@ -9,7 +9,7 @@ El programa le pedirá que ingrese una serie de comandos para agregar o retirar 
 
 ## Créditos
 
-Este programa fue escrito por [Tu nombre aquí].
+Este programa fue escrito por Bucket.
 
 ## Licencia
 
