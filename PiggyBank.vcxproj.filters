@@ -39,6 +39,9 @@
     <ClCompile Include="csv.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="ModifyValue.c">
+      <Filter>Archivos de origen\PiggyBank</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdLib.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="csv.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifyValue.h">
+      <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

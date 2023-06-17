@@ -7,8 +7,8 @@ row_t transRows[MAX_ROWS];
 static int transRowCount;
 
 typedef void (*func_ptr)(int);
-func_ptr menu[NUM_OPTIONS] = {	setValue,
-								removeValue,
+func_ptr menu[NUM_OPTIONS] = {	preSetValue,
+								preRemoveValue,
 								printStats};
 
 void printMenu() {

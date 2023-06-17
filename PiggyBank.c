@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -8,6 +8,7 @@
 #include "PiggyBank.h"
 #include "StdLib.h"
 #include "Funcionalities.h"
+#include "ModifyValue.h"
 #pragma region Global Variables
 int maxCapacity[]			=			{0, 0};
 int currentCapacity[]		=			{0, 0};
@@ -29,43 +30,23 @@ static int dataRowCount;
 static char* lang = "es";
 #pragma endregion
 #pragma region ModifyPiggyBank
+void printCountByCoinDenomination(int setting);
 void printCoinNorm(int money);
 int getCurrentPosition(int setting, int value); 
 void piggyBankCreator();
-
+void updateValues();
 void dimensionPiggyBank(char* language) {
 	lang = language;
 	transRowCount = readTrans_csv(transRows);
 	dataRowCount = readData_csv(dataRows);
-	char cadena[100];
 	if (strcmp(dataRows[0].value, "true") == 0)
 	{
 		printf("Se ha encontrado datos antiguos\n");
 		for (int i = 1; i < dataRowCount; i++)
 			printf("%s: %s\n", dataRows[i].id, dataRows[i].value);
-		if (GetContinue("�Quieres usar los datos nuevos o antiguos? Y/N"))
+		if (GetContinue("¿Quieres usar los datos nuevos o antiguos? Y/N"))
 		{
-			piggyBankMoney				=	atoi(dataRows[searchByID(dataRows, dataRowCount, "money")].value);
-			maxCapacity[Coin]			=	atoi(dataRows[searchByID(dataRows, dataRowCount, "max_coin_capacity")].value);
-			maxCapacity[Bill]			=	atoi(dataRows[searchByID(dataRows, dataRowCount, "max_bill_capacity")].value);
-			currentCapacity[Coin]		=	atoi(dataRows[searchByID(dataRows, dataRowCount, "total_coins_entered")].value);
-			currentCapacity[Bill]		=	atoi(dataRows[searchByID(dataRows, dataRowCount, "total_bills_entered")].value);
-			piggyBankMoneyByDiv[Coin]	=	atoi(dataRows[searchByID(dataRows, dataRowCount, "moneyByCoins")].value);
-			piggyBankMoneyByDiv[Bill]	=	atoi(dataRows[searchByID(dataRows, dataRowCount, "moneyByBills")].value);
-			for (int i = 0; i < 5; i++)
-			{
-				sprintf_s(cadena, sizeof(cadena), "coins_entered[%d]", i);
-				countMoneyNorm[Coin][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
-				sprintf_s(cadena, sizeof(cadena), "bills_entered[%d]", i);
-				countMoneyNorm[Bill][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
-
-
-				sprintf_s(cadena, sizeof(cadena), "currentCoinNorm[%d]", i);
-				currentCoinNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
-				sprintf_s(cadena, sizeof(cadena), "currentBillNorm[%d]", i);
-				currentBillNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
-			}
-			printf("\nLos valores se restablecieron correctamente!\n");
+			updateValues();
 		}
 		else {
 			resetPiggyBank();
@@ -77,9 +58,34 @@ void dimensionPiggyBank(char* language) {
 
 	qsort(currentCoinNorm, 5, sizeof(int), compareIntegers);
 	qsort(currentBillNorm, 5, sizeof(int), compareIntegers);
+	setCurrentValues(currentCoinNorm, currentBillNorm, language);
 	editByID("is_a_new_piggybank","true");
 }
+void updateValues() {
+	dataRowCount = readData_csv(dataRows);
+	char cadena[100];
+	piggyBankMoney = atoi(dataRows[searchByID(dataRows, dataRowCount, "money")].value);
+	maxCapacity[Coin] = atoi(dataRows[searchByID(dataRows, dataRowCount, "max_coin_capacity")].value);
+	maxCapacity[Bill] = atoi(dataRows[searchByID(dataRows, dataRowCount, "max_bill_capacity")].value);
+	currentCapacity[Coin] = atoi(dataRows[searchByID(dataRows, dataRowCount, "total_coins_entered")].value);
+	currentCapacity[Bill] = atoi(dataRows[searchByID(dataRows, dataRowCount, "total_bills_entered")].value);
+	piggyBankMoneyByDiv[Coin] = atoi(dataRows[searchByID(dataRows, dataRowCount, "moneyByCoins")].value);
+	piggyBankMoneyByDiv[Bill] = atoi(dataRows[searchByID(dataRows, dataRowCount, "moneyByBills")].value);
+	for (int i = 0; i < 5; i++)
+	{
+		sprintf_s(cadena, sizeof(cadena), "coins_entered[%d]", i);
+		countMoneyNorm[Coin][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
+		sprintf_s(cadena, sizeof(cadena), "bills_entered[%d]", i);
+		countMoneyNorm[Bill][i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
 
+
+		sprintf_s(cadena, sizeof(cadena), "currentCoinNorm[%d]", i);
+		currentCoinNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
+		sprintf_s(cadena, sizeof(cadena), "currentBillNorm[%d]", i);
+		currentBillNorm[i] = atoi(dataRows[searchByID(dataRows, dataRowCount, cadena)].value);
+	}
+	printf("\nLos valores se restablecieron correctamente!\n");
+}
 void piggyBankCreator() {
 	char cadena[50];
 	char valor[50];
@@ -93,6 +99,7 @@ void piggyBankCreator() {
 			maxCapacity[Coin] = buffer;
 			sprintf_s(cadena, sizeof(cadena), "%d", maxCapacity[Coin]);
 			editByID("max_coin_capacity", cadena);
+			break;
 		}
 		printf("El limite fue alcanzado o se ingreso un numero negativo, intentalo de nuevo");
 	} while (true);
@@ -105,6 +112,7 @@ void piggyBankCreator() {
 			maxCapacity[Bill] = buffer;
 			sprintf_s(cadena, sizeof(cadena), "%d", maxCapacity[Bill]);
 			editByID("max_bill_capacity", cadena);
+			break;
 		}
 		printf("El limite fue alcanzado o se ingreso un numero negativo, intentalo de nuevo");
 	} while (true);
@@ -150,103 +158,11 @@ void piggyBankCreator() {
 		currentBillNorm[i] = currentValue;
 	}
 }
-void setValue(int setting) {
-	int currentValue = 0;
-	char cadena[50];
-	char valor[50];
-	do {
-		printCoinNorm(setting);
-		currentValue = getNumber(get_text(find_row_by_id(transRows, transRowCount, "deposit_prompt"), lang));
-
-		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
-			printf("\n%s \n", get_text(find_row_by_id(transRows, transRowCount, "invalid_value_error_2"),lang));
-			continue;
-		}
-		piggyBankMoney += currentValue;
-		sprintf_s(valor, sizeof(valor), "%d", piggyBankMoney);
-		editByID("money", valor);
-
-		piggyBankMoneyByDiv[setting] += currentValue;
-		sprintf_s(valor, sizeof(valor), "%d", piggyBankMoneyByDiv[0]);
-		editByID("moneyByCoins", valor);
-		sprintf_s(valor, sizeof(valor), "%d", piggyBankMoneyByDiv[1]);
-		editByID("moneyByBills", valor);
-
-		currentCapacity[setting]++;
-		sprintf_s(valor, sizeof(valor), "%d", currentCapacity[setting]);
-		editByID(setting == Coin ? "total_coins_entered" : "total_bills_entered", valor);
-
-		countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]++;
-		sprintf_s(cadena, sizeof(cadena), setting == Coin ? "coins_entered[%d]" : "bills_entered[%d]", getCurrentPosition(setting, currentValue));
-		sprintf_s(valor, sizeof(valor), "%d", countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]);
-		editByID(cadena, valor);
-
-
-		printf("\n%s\n", get_text(find_row_by_id(transRows, transRowCount, "successful_entry"), lang));
-		break;
-	} while (true);
+void preSetValue(int settings) {
+	setValue(settings, piggyBankMoney,&piggyBankMoney, &piggyBankMoneyByDiv, &currentCapacity, &countMoneyNorm);
 }
-void removeValue(int setting) {
-	int currentValue = 0;
-	do {
-		printf("%s %d\n", get_text(find_row_by_id(transRows, transRowCount, "total_money"), lang),piggyBankMoney);
-		printCoinNorm(setting);
-		currentValue = getNumber(get_text(find_row_by_id(transRows, transRowCount, "enter_value"), lang));
-		if (!isTheValueInTheNorm(currentValue, setting == 0 ? currentCoinNorm : currentBillNorm)) {
-			printf("\n%s\n", get_text(find_row_by_id(transRows, transRowCount, "invalid_value_error_2"), lang));
-			continue;
-		}
-		if (piggyBankMoney < currentValue) {
-			printf("%s %d %s %d", 
-				get_text(find_row_by_id(transRows, transRowCount, "extraction_value"), lang), 
-				currentValue, 
-				get_text(find_row_by_id(transRows, transRowCount, "greater_than_total"), lang),
-				piggyBankMoney);
-			continue;
-		}
-		int* result = min_combination(currentCoinNorm, currentBillNorm, (piggyBankMoney - currentValue));
-		/*if (maxCapacity[setting] > minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney))
-			currentCapacity[setting] = minValueToMoney(setting == 0 ? currentCoinNorm : currentBillNorm,piggyBankMoney);*/
-		char valor[50];
-		if (maxCapacity[0] > result[0] && maxCapacity[1] > result[1])
-		{
-			currentCapacity[0] = result[0];
-			currentCapacity[1] = result[1];
-			sprintf_s(valor, sizeof(valor), "%d", currentCapacity[0]);
-			editByID("total_coins_entered", valor);
-			sprintf_s(valor, sizeof(valor), "%d", currentCapacity[1]);
-			editByID("total_bills_entered", valor);
-		}
-		else {
-
-			printf("%s\n", get_text(find_row_by_id(transRows, transRowCount, "conversion_error"), lang));
-			if (GetContinue(get_text(find_row_by_id(transRows, transRowCount, "continue_extraction"), lang)))
-				continue;
-			break;
-		}
-		piggyBankMoney -= currentValue;
-		sprintf_s(valor, sizeof(valor), "%d", currentCapacity[0]);
-		editByID("money", valor);
-
-		piggyBankMoneyByDiv[setting] = piggyBankMoneyByDiv[setting] - currentValue >= 0 ? currentValue : 0;
-		if (piggyBankMoneyByDiv[setting] - currentValue < 0)
-		{
-			int remainder = (piggyBankMoneyByDiv[setting] - currentValue) * -1;
-			piggyBankMoneyByDiv[setting == Coin ? Bill : Coin] -= remainder;
-		}
-		else
-			piggyBankMoneyByDiv[setting] -= currentValue;
-		countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]
-			= countMoneyNorm[setting][getCurrentPosition(setting, currentValue)] == 0
-			? 0 : countMoneyNorm[setting][getCurrentPosition(setting, currentValue)]--;
-
-		sprintf_s(valor, sizeof(valor), "%d", piggyBankMoneyByDiv[0]);
-		editByID("moneyByCoins", valor);
-		sprintf_s(valor, sizeof(valor), "%d", piggyBankMoneyByDiv[1]);
-		editByID("moneyByBills", valor);
-		printf("\n%s\n", get_text(find_row_by_id(transRows, transRowCount, "value_removed"), lang));
-		break;
-	} while (true);
+void preRemoveValue(int settings) {
+	removeValue(settings, &piggyBankMoney, &countMoneyNorm, &currentCapacity);
 }
 #pragma endregion
 #pragma region Styles
@@ -281,7 +197,7 @@ void printCountByCoinDenomination(int setting) {
 			setting == Coin ? defaultCoinNorm[i] : defaultBillNorm[i]);
 }
 void printStats(int setting) {
-	
+	updateValues();
 switch (setting)
 	{
 	case 0:

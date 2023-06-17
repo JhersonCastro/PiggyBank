@@ -52,3 +52,6 @@ exit_option,13. Salir,13. Exit
 option_choice,¿Cuál opción quieres elegir?:,Which option do you want to choose?: 
 invalid_number,¡Número ingresado no válido!,Invalid number entered! 
 funny_number,Jajaja el número chistoso,Haha the funny number
+stockCoins,Estas son las existencias de monedas:,Coins Stocks:
+stockBills,Estas son las existencias de los billetes:,Bill Stocks:
+have,tiene,have
