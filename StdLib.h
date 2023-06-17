@@ -1,9 +1,8 @@
-/*
-* @file funciones.h
+/**
+* @file StdLib.h
 * @version 1.3
 * @date 16/06/2023
 * @author no
-* @title Liberia de complementos
 * @brief Funciones de utileria
 * @code
 * int main(){
@@ -16,28 +15,29 @@
 * }
 * @endcode
 */
+#include <stdbool.h>
 #pragma once
 
-/*
+/**
 * @brief GetContinue Pregunta al usuario si quiere seguir.
 * @param PrmLabel Una simple etiqueta
 * @return retorna verdadero si la respuesta del usuario es positiva, sino retorna falso
 */
-bool GetContinue(char* PrmLabel);
-/*
+bool GetContinue(const char* PrmLabel);
+/**
 * @brief getNumber Pregunta al usuario por un numero, y comprueba si lo ingresado si es un numero.
 * @param prmEtiqueta Una simple etiqueta
 * @return retorna el numero dado
 */
-float getNumber(char* prmEtiqueta);
-/*
+int getNumber(const char* prmEtiqueta);
+/**
 * @brief isDuplicateValue verifica si en el array pasado por parametro es igual al valor dado por el parametro.
 * @param array el arreglo a evaluar
 * @param value el valor para evaluar
 * @return retorna verdadero si hay una equivalencia, falso si no
 */
-bool isDuplicateValue(int array[], int value);
-/*
+bool isDuplicateValue(int array[], int value, int size);
+/**
 * @brief compareIntegers Compara dos enteros
 * @param a none
 * @param b none

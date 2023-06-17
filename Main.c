@@ -1,6 +1,5 @@
 #include "Menu.h"
-#include "csv.h"
 int main(void) {
-    piggyBank(setLanguage());
+    piggyBank();
     return 0;
 }

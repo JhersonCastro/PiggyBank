@@ -4,7 +4,7 @@
 #include <limits.h>
 #include "StdLib.h"
 
-bool GetContinue(char* PrmLabel) {
+bool GetContinue(const char* PrmLabel) {
 	char str[10];
 	printf("%s\n", PrmLabel);
 	while (fgets(str, sizeof(str), stdin) != NULL)
@@ -22,7 +22,7 @@ bool GetContinue(char* PrmLabel) {
 	}
 	return false;
 }
-float getNumber(char* prmEtiqueta) {
+int getNumber(const char* prmEtiqueta) {
 	char varInput[50];
 	float varNumber;
 	while (1)
@@ -30,7 +30,7 @@ float getNumber(char* prmEtiqueta) {
 		printf("%s", prmEtiqueta);
 		fgets(varInput, 50, stdin);
 		char* varEnd;
-		varNumber = strtod(varInput, &varEnd);
+		varNumber = (int)strtod(varInput, &varEnd);
 		if (varEnd == varInput || *varEnd != '\n')
 		{
 			printf("Invalid Input\n");
@@ -41,7 +41,7 @@ float getNumber(char* prmEtiqueta) {
 			break;
 	}
 	printf("\n");
-	return varNumber;
+	return (int)varNumber;
 }
 int compareIntegers(const void* a, const void* b) {
 	int intA = *((int*)a);
@@ -55,8 +55,8 @@ int compareIntegers(const void* a, const void* b) {
 		return 0;
 }
 
-bool isDuplicateValue(int array[], int value) {
-	for (int i = 0; i < sizeof(array)/sizeof(array[0]); i++) {
+bool isDuplicateValue(int array[], int value, int size) {
+	for (int i = 0; i < size; i++) {
 		if (value == array[i])
 			return true;
 	}

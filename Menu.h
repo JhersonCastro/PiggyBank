@@ -1,14 +1,13 @@
-/*
+/**
 * @file Menu.h
 * @version 1.3
 * @date 16/06/2023
 * @author no
-* @title Menu
 * @brief Despliega el menu
 */
 #pragma once
-/*
+/**
 * @brief piggyBank despliega el menu para la incializacion de la alcancia
 * @param language el idioma elegido por el usuario
 */
-void piggyBank(char* language);
+void piggyBank();

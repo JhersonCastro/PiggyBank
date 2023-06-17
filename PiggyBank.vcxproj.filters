@@ -19,12 +19,15 @@
     <Filter Include="Archivos de encabezado\PiggyBankH">
       <UniqueIdentifier>{6c0e551a-46d5-45a3-9dd9-eb84a9a19006}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Data&amp;GenericFuncs">
+      <UniqueIdentifier>{18eb663e-e82d-4e05-9ac7-d6fc229af1cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Data&amp;GenericFuncs">
+      <UniqueIdentifier>{fb8dbede-64ff-46eb-bc8a-739c52f12e23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="StdLib.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="PiggyBank.c">
@@ -36,17 +39,20 @@
     <ClCompile Include="Menu.c">
       <Filter>Archivos de origen\PiggyBank</Filter>
     </ClCompile>
-    <ClCompile Include="csv.c">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="ModifyValue.c">
       <Filter>Archivos de origen\PiggyBank</Filter>
     </ClCompile>
+    <ClCompile Include="csv.c">
+      <Filter>Archivos de origen\Data&amp;GenericFuncs</Filter>
+    </ClCompile>
+    <ClCompile Include="StdLib.c">
+      <Filter>Archivos de origen\Data&amp;GenericFuncs</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\DOCUMENTOS USUARIO\Desktop\PiggyBank\PiggyBank NLC (No Lang Code)\Miscellaneous.c">
+      <Filter>Archivos de origen\Data&amp;GenericFuncs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StdLib.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="PiggyBank.h">
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
@@ -56,17 +62,20 @@
     <ClInclude Include="Menu.h">
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
-    <ClInclude Include="csv.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="ModifyValue.h">
       <Filter>Archivos de encabezado\PiggyBankH</Filter>
     </ClInclude>
+    <ClInclude Include="csv.h">
+      <Filter>Archivos de encabezado\Data&amp;GenericFuncs</Filter>
+    </ClInclude>
+    <ClInclude Include="StdLib.h">
+      <Filter>Archivos de encabezado\Data&amp;GenericFuncs</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous.h">
+      <Filter>Archivos de encabezado\Data&amp;GenericFuncs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="trans.csv">
-      <Filter>Archivos de recursos</Filter>
-    </None>
     <None Include="data.csv">
       <Filter>Archivos de recursos</Filter>
     </None>

@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="csv.c" />
+    <ClCompile Include="D:\DOCUMENTOS USUARIO\Desktop\PiggyBank\PiggyBank NLC (No Lang Code)\Miscellaneous.c" />
     <ClCompile Include="Funcionalities.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Menu.c" />
@@ -139,13 +140,13 @@
     <ClInclude Include="csv.h" />
     <ClInclude Include="Funcionalities.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Miscellaneous.h" />
     <ClInclude Include="ModifyValue.h" />
     <ClInclude Include="PiggyBank.h" />
     <ClInclude Include="StdLib.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data.csv" />
-    <None Include="trans.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
