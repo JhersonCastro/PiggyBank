@@ -1,0 +1,124 @@
+\doxysection{C\+:/\+Users/\+PERSONAL/source/repos/\+Piggy\+Bank/\+Std\+Lib.h File Reference}
+\hypertarget{_std_lib_8h}{}\label{_std_lib_8h}\index{C:/Users/PERSONAL/source/repos/PiggyBank/StdLib.h@{C:/Users/PERSONAL/source/repos/PiggyBank/StdLib.h}}
+
+
+Funciones de utileria.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_std_lib_8h_ae9bcc000f94ce5413f503f953cc57b2f}{Get\+Continue}} (const char \texorpdfstring{$\ast$}{*}Prm\+Label)
+\begin{DoxyCompactList}\small\item\em Get\+Continue Pregunta al usuario si quiere seguir. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_std_lib_8h_ad333071b6e082f62e0a92bad43f2e53d}{get\+Number}} (const char \texorpdfstring{$\ast$}{*}prm\+Etiqueta)
+\begin{DoxyCompactList}\small\item\em get\+Number Pregunta al usuario por un numero, y comprueba si lo ingresado si es un numero. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_std_lib_8h_affe8098a8f4084c68c470d71355817b1}{is\+Duplicate\+Value}} (int array\mbox{[}$\,$\mbox{]}, int value, int size)
+\begin{DoxyCompactList}\small\item\em is\+Duplicate\+Value verifica si en el array pasado por parametro es igual al valor dado por el parametro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_std_lib_8h_a9256c3b6f1235d546c6b07780e9ba787}{compare\+Integers}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em compare\+Integers Compara dos enteros \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funciones de utileria. 
+
+\begin{DoxyVersion}{Version}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/06/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+no 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ example\ =\ 0;}
+\DoxyCodeLine{example\ =\ getNumber(\textcolor{stringliteral}{"{}Tell\ me\ a\ number"{}});}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}The\ number\ is:\ \%i"{}},\ example);}
+\DoxyCodeLine{\textcolor{comment}{//Output:\ Tell\ me\ a\ number}}
+\DoxyCodeLine{\textcolor{comment}{//Input:\ 5}}
+\DoxyCodeLine{\textcolor{comment}{//Output:\ The\ number\ is\ 5}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_std_lib_8h_a9256c3b6f1235d546c6b07780e9ba787}\label{_std_lib_8h_a9256c3b6f1235d546c6b07780e9ba787} 
+\index{StdLib.h@{StdLib.h}!compareIntegers@{compareIntegers}}
+\index{compareIntegers@{compareIntegers}!StdLib.h@{StdLib.h}}
+\doxysubsubsection{\texorpdfstring{compareIntegers()}{compareIntegers()}}
+{\footnotesize\ttfamily int compare\+Integers (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+compare\+Integers Compara dos enteros 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & none \\
+\hline
+{\em b} & none \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 menor, 0 igual, 1 mayor 
+\end{DoxyReturn}
+\Hypertarget{_std_lib_8h_ae9bcc000f94ce5413f503f953cc57b2f}\label{_std_lib_8h_ae9bcc000f94ce5413f503f953cc57b2f} 
+\index{StdLib.h@{StdLib.h}!GetContinue@{GetContinue}}
+\index{GetContinue@{GetContinue}!StdLib.h@{StdLib.h}}
+\doxysubsubsection{\texorpdfstring{GetContinue()}{GetContinue()}}
+{\footnotesize\ttfamily bool Get\+Continue (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{Prm\+Label }\end{DoxyParamCaption})}
+
+
+
+Get\+Continue Pregunta al usuario si quiere seguir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Prm\+Label} & Una simple etiqueta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna verdadero si la respuesta del usuario es positiva, sino retorna falso 
+\end{DoxyReturn}
+\Hypertarget{_std_lib_8h_ad333071b6e082f62e0a92bad43f2e53d}\label{_std_lib_8h_ad333071b6e082f62e0a92bad43f2e53d} 
+\index{StdLib.h@{StdLib.h}!getNumber@{getNumber}}
+\index{getNumber@{getNumber}!StdLib.h@{StdLib.h}}
+\doxysubsubsection{\texorpdfstring{getNumber()}{getNumber()}}
+{\footnotesize\ttfamily int get\+Number (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prm\+Etiqueta }\end{DoxyParamCaption})}
+
+
+
+get\+Number Pregunta al usuario por un numero, y comprueba si lo ingresado si es un numero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prm\+Etiqueta} & Una simple etiqueta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna el numero dado 
+\end{DoxyReturn}
+\Hypertarget{_std_lib_8h_affe8098a8f4084c68c470d71355817b1}\label{_std_lib_8h_affe8098a8f4084c68c470d71355817b1} 
+\index{StdLib.h@{StdLib.h}!isDuplicateValue@{isDuplicateValue}}
+\index{isDuplicateValue@{isDuplicateValue}!StdLib.h@{StdLib.h}}
+\doxysubsubsection{\texorpdfstring{isDuplicateValue()}{isDuplicateValue()}}
+{\footnotesize\ttfamily bool is\+Duplicate\+Value (\begin{DoxyParamCaption}\item[{int}]{array\mbox{[}$\,$\mbox{]},  }\item[{int}]{value,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+is\+Duplicate\+Value verifica si en el array pasado por parametro es igual al valor dado por el parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & el arreglo a evaluar \\
+\hline
+{\em value} & el valor para evaluar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna verdadero si hay una equivalencia, falso si no 
+\end{DoxyReturn}

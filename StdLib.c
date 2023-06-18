@@ -24,13 +24,13 @@ bool GetContinue(const char* PrmLabel) {
 }
 int getNumber(const char* prmEtiqueta) {
 	char varInput[50];
-	float varNumber;
+	double varNumber;
 	while (1)
 	{
 		printf("%s", prmEtiqueta);
 		fgets(varInput, 50, stdin);
 		char* varEnd;
-		varNumber = (int)strtod(varInput, &varEnd);
+		varNumber = strtod(varInput, &varEnd);
 		if (varEnd == varInput || *varEnd != '\n')
 		{
 			printf("Invalid Input\n");
@@ -54,7 +54,6 @@ int compareIntegers(const void* a, const void* b) {
 	else
 		return 0;
 }
-
 bool isDuplicateValue(int array[], int value, int size) {
 	for (int i = 0; i < size; i++) {
 		if (value == array[i])

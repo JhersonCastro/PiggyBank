@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "StdLib.h"
+#include "transactions.h"
 #include "piggyBank.h"
 #include "ModifyValue.h"
 #include "Miscellaneous.h"
@@ -52,7 +53,7 @@ void setValue(int setting, int* piggyBankMoney, int* piggyBankMoneyByDiv, int* c
 		snprintf(valor, sizeof(valor), "%d", countMoneyNorm[setting][getCurrentPosition(setting, currentValue, modDefaultCoinNorm, modDefaultBillNorm)]);
 		editByID(cadena, valor);
 
-
+		saveTransaction(setting == modCoin ? "Se ha ingresado (moneda):" : "Se ha ingresado (billete):", currentValue);
 		printf("Value entered successfully\n");
 		break;
 	} while (1);
@@ -68,10 +69,7 @@ void removeValue(int setting, int* piggyBankMoney, int* piggyBankMoneyByDiv, int
 		for (int i = 0; i < 5; i++)
 		{
 			if (countMoneyNorm[setting][i] > 0)
-			{
-				printf("%d %s: %d\n", setting == modCoin ? modDefaultCoinNorm[i] : modDefaultBillNorm[i],
-					"have", countMoneyNorm[setting][i]);
-			}
+				printf("%d have: %d\n", setting == modCoin ? modDefaultCoinNorm[i] : modDefaultBillNorm[i],	 countMoneyNorm[setting][i]);
 		}
 		printf("\n");
 		currentValue = getNumber("Enter the value you want to remove within the standard.");
@@ -97,6 +95,7 @@ void removeValue(int setting, int* piggyBankMoney, int* piggyBankMoneyByDiv, int
 				piggyBankMoneyByDiv[setting] -= currentValue;
 				snprintf(valor, sizeof(valor), "%d", piggyBankMoneyByDiv[setting]);
 				editByID(setting == modCoin ? "moneyByCoins" : "moneyByBills", valor);
+				saveTransaction(setting == modCoin ? "Se ha removido (moneda):" : "Se ha removido (billete):", currentValue);
 				printf("Se ha retirado correctamente\n");
 				return;
 			}

@@ -1,0 +1,99 @@
+\doxysection{C\+:/\+Users/\+PERSONAL/source/repos/\+Piggy\+Bank/\+Miscellaneous.h File Reference}
+\hypertarget{_miscellaneous_8h}{}\label{_miscellaneous_8h}\index{C:/Users/PERSONAL/source/repos/PiggyBank/Miscellaneous.h@{C:/Users/PERSONAL/source/repos/PiggyBank/Miscellaneous.h}}
+
+
+Funciones de Lectura y escritura sobre archivos .csv.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_miscellaneous_8h_ac77be1d11c2a0d5503cbf3ece93a93f8}{print\+Count\+By\+Coin\+Denomination}} (int setting, int count\+Money\+Norm\mbox{[}2\mbox{]}\mbox{[}5\mbox{]}, int default\+Coin\+Norm\mbox{[}$\,$\mbox{]}, int default\+Bill\+Norm\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em print\+Count\+By\+Coin\+Denomination imprime el conteo por denominacion \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_miscellaneous_8h_a031440330acbcf7b25aa3553990df89c}{print\+Coin\+Norm}} (int setting, int current\+Coin\+Norm\mbox{[}$\,$\mbox{]}, int current\+Bill\+Norm\mbox{[}$\,$\mbox{]}, int size)
+\begin{DoxyCompactList}\small\item\em print\+Coin\+Norm imprime la norma \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_miscellaneous_8h_a90b9bad6d3a3ebc23cc8728c3215ab21}{get\+Current\+Position}} (int setting, int value, int default\+Coin\+Norm\mbox{[}$\,$\mbox{]}, int default\+Bill\+Norm\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em get\+Current\+Position encuentra la posicion por un valor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funciones de Lectura y escritura sobre archivos .csv. 
+
+\begin{DoxyVersion}{Version}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/06/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+no 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_miscellaneous_8h_a90b9bad6d3a3ebc23cc8728c3215ab21}\label{_miscellaneous_8h_a90b9bad6d3a3ebc23cc8728c3215ab21} 
+\index{Miscellaneous.h@{Miscellaneous.h}!getCurrentPosition@{getCurrentPosition}}
+\index{getCurrentPosition@{getCurrentPosition}!Miscellaneous.h@{Miscellaneous.h}}
+\doxysubsubsection{\texorpdfstring{getCurrentPosition()}{getCurrentPosition()}}
+{\footnotesize\ttfamily int get\+Current\+Position (\begin{DoxyParamCaption}\item[{int}]{setting,  }\item[{int}]{value,  }\item[{int}]{default\+Coin\+Norm\mbox{[}$\,$\mbox{]},  }\item[{int}]{default\+Bill\+Norm\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+get\+Current\+Position encuentra la posicion por un valor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & si es 0 son monedas, si es 1 son billetes \\
+\hline
+{\em value} & el valor dado por el usuario \\
+\hline
+{\em default\+Coin\+Norm} & la norma por defecto para monedas \\
+\hline
+{\em default\+Bill\+Norm} & la norma por defecto para billetes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna la posicion encontrada por ese valor, -\/1 si no se encuentra 
+\end{DoxyReturn}
+\Hypertarget{_miscellaneous_8h_a031440330acbcf7b25aa3553990df89c}\label{_miscellaneous_8h_a031440330acbcf7b25aa3553990df89c} 
+\index{Miscellaneous.h@{Miscellaneous.h}!printCoinNorm@{printCoinNorm}}
+\index{printCoinNorm@{printCoinNorm}!Miscellaneous.h@{Miscellaneous.h}}
+\doxysubsubsection{\texorpdfstring{printCoinNorm()}{printCoinNorm()}}
+{\footnotesize\ttfamily void print\+Coin\+Norm (\begin{DoxyParamCaption}\item[{int}]{setting,  }\item[{int}]{current\+Coin\+Norm\mbox{[}$\,$\mbox{]},  }\item[{int}]{current\+Bill\+Norm\mbox{[}$\,$\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+print\+Coin\+Norm imprime la norma 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & si es 0 son monedas, si es 1 son billetes \\
+\hline
+{\em current\+Coin\+Norm} & la norma personalizada hecha por el usuario para las monedas \\
+\hline
+{\em current\+Bill\+Norm} & la norma personalizada hecha por el usuario para los billetes \\
+\hline
+{\em size} & el tamaño de los areglos \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_miscellaneous_8h_ac77be1d11c2a0d5503cbf3ece93a93f8}\label{_miscellaneous_8h_ac77be1d11c2a0d5503cbf3ece93a93f8} 
+\index{Miscellaneous.h@{Miscellaneous.h}!printCountByCoinDenomination@{printCountByCoinDenomination}}
+\index{printCountByCoinDenomination@{printCountByCoinDenomination}!Miscellaneous.h@{Miscellaneous.h}}
+\doxysubsubsection{\texorpdfstring{printCountByCoinDenomination()}{printCountByCoinDenomination()}}
+{\footnotesize\ttfamily void print\+Count\+By\+Coin\+Denomination (\begin{DoxyParamCaption}\item[{int}]{setting,  }\item[{int}]{count\+Money\+Norm\mbox{[}2\mbox{]}\mbox{[}5\mbox{]},  }\item[{int}]{default\+Coin\+Norm\mbox{[}$\,$\mbox{]},  }\item[{int}]{default\+Bill\+Norm\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+print\+Count\+By\+Coin\+Denomination imprime el conteo por denominacion 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & si es 0 son monedas, si es 1 son billetes \\
+\hline
+{\em count\+Money\+Norm} & aqui se almacena el dinero total por denominacion \\
+\hline
+{\em default\+Coin\+Norm} & la norma por defecto para monedas \\
+\hline
+{\em default\+Bill\+Norm} & la norma por defecto para billetes \\
+\hline
+\end{DoxyParams}

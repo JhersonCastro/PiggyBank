@@ -51,6 +51,9 @@
     <ClCompile Include="D:\DOCUMENTOS USUARIO\Desktop\PiggyBank\PiggyBank NLC (No Lang Code)\Miscellaneous.c">
       <Filter>Archivos de origen\Data&amp;GenericFuncs</Filter>
     </ClCompile>
+    <ClCompile Include="transactions.c">
+      <Filter>Archivos de origen\Data&amp;GenericFuncs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PiggyBank.h">
@@ -74,10 +77,18 @@
     <ClInclude Include="Miscellaneous.h">
       <Filter>Archivos de encabezado\Data&amp;GenericFuncs</Filter>
     </ClInclude>
+    <ClInclude Include="transactions.h">
+      <Filter>Archivos de encabezado\Data&amp;GenericFuncs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data.csv">
       <Filter>Archivos de recursos</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="transactions.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
   </ItemGroup>
 </Project>

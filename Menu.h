@@ -8,6 +8,5 @@
 #pragma once
 /**
 * @brief piggyBank despliega el menu para la incializacion de la alcancia
-* @param language el idioma elegido por el usuario
 */
 void piggyBank();

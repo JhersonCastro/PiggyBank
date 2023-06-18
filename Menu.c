@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "csv.h"
 #include "PiggyBank.h"
+#include "transactions.h"
 #define NUM_OPTIONS 3
 
 typedef void (*func_ptr)(int);
@@ -10,7 +11,7 @@ func_ptr menu[NUM_OPTIONS] = { preSetValue,
 								preRemoveValue,
 								printStats };
 char* MenuItems[] = {
-	"1. Enter Coin",
+		"1. Enter Coin",
 		"2. Enter Bill",
 		"3. Extract Coin",
 		"4. Extract Bill",
@@ -22,19 +23,16 @@ char* MenuItems[] = {
 		"10. Inventories",
 		"11. Bill Inventories.",
 		"12. Coin Inventories.",
-		"13. Exit.",
+		"13. Show transactions",
+		"14. Exit.",
 };
-void printMenu() {
-
-	for (int i = 0; i < 13; i++)
-		printf("%s\n", MenuItems[i]);
-}
 void piggyBank() {
 	dimensionPiggyBank();
 	int opc = 0;
 	do
 	{
-		printMenu();
+		for (int i = 0; i < 14; i++)
+			printf("%s\n", MenuItems[i]);
 		opc = getNumber("Which option do you want to choose?:");
 		if (opc == 1 || opc == 2)
 			menu[0](opc == 1 ? 0 : 1);
@@ -43,9 +41,11 @@ void piggyBank() {
 		else if (opc >= 5 && opc <= 12)
 			menu[2](opc - 5);
 		else if (opc == 13)
-			break;
-		else
+			readAndPrintTransactions();
+		else if (opc != 14)
 			printf("Invalid number entered! \n");
+		else
+			break;
 		system("pause");
 		system("cls");
 	} while (true);

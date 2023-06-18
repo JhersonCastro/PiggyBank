@@ -135,6 +135,7 @@
     <ClCompile Include="ModifyValue.c" />
     <ClCompile Include="PiggyBank.c" />
     <ClCompile Include="StdLib.c" />
+    <ClCompile Include="transactions.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="csv.h" />
@@ -144,9 +145,13 @@
     <ClInclude Include="ModifyValue.h" />
     <ClInclude Include="PiggyBank.h" />
     <ClInclude Include="StdLib.h" />
+    <ClInclude Include="transactions.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="transactions.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

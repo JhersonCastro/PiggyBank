@@ -7,6 +7,9 @@
 * @brief Alcancia primitiva, puede imprimir la estadistica dada por el usuario
 */
 
+extern int defaultBillNorm[5];
+extern int defaultCoinNorm[5];
+
 /**
 * @brief preSetValue Le da los parametros de manera primitiva a la funcion SetValue, que esta en otro archivo
 * @param settings 0 = Coins, setting 1 = Bills

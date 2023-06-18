@@ -1,0 +1,96 @@
+\doxysection{C\+:/\+Users/\+PERSONAL/source/repos/\+Piggy\+Bank/\+Modify\+Value.h File Reference}
+\hypertarget{_modify_value_8h}{}\label{_modify_value_8h}\index{C:/Users/PERSONAL/source/repos/PiggyBank/ModifyValue.h@{C:/Users/PERSONAL/source/repos/PiggyBank/ModifyValue.h}}
+
+
+Modifica el dinero (agrega o elimina)  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69}{set\+Value}} (int setting, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money\+By\+Div, int \texorpdfstring{$\ast$}{*}current\+Capacity, int(\texorpdfstring{$\ast$}{*}count\+Money\+Norm)\mbox{[}5\mbox{]})
+\begin{DoxyCompactList}\small\item\em set\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_modify_value_8h_a496ae77bf5f789e70c08a31a8dd004df}{set\+Current\+Values}} (int Coin\+Norm\mbox{[}$\,$\mbox{]}, int Bill\+Norm\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em set\+Current\+Values Esta funcion solo es para obtener las variables primordiales en otro archivo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_modify_value_8h_a4886504c553a593fc9751058c2f66652}{remove\+Value}} (int setting, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money\+By\+Div, int(\texorpdfstring{$\ast$}{*}count\+Money\+Norm)\mbox{[}5\mbox{]}, int \texorpdfstring{$\ast$}{*}current\+Capacity)
+\begin{DoxyCompactList}\small\item\em remove\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este vacia, lo elimina \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modifica el dinero (agrega o elimina) 
+
+\begin{DoxyVersion}{Version}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/06/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+no 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_modify_value_8h_a4886504c553a593fc9751058c2f66652}\label{_modify_value_8h_a4886504c553a593fc9751058c2f66652} 
+\index{ModifyValue.h@{ModifyValue.h}!removeValue@{removeValue}}
+\index{removeValue@{removeValue}!ModifyValue.h@{ModifyValue.h}}
+\doxysubsubsection{\texorpdfstring{removeValue()}{removeValue()}}
+{\footnotesize\ttfamily void remove\+Value (\begin{DoxyParamCaption}\item[{int}]{setting,  }\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money,  }\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money\+By\+Div,  }\item[{int(\texorpdfstring{$\ast$}{*})}]{count\+Money\+Norm\mbox{[}5\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Capacity }\end{DoxyParamCaption})}
+
+
+
+remove\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este vacia, lo elimina 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & 0 = Coins, setting 1 = Bills \\
+\hline
+{\em piggy\+Bank\+Money} & puntero para la modificacion del dinero \\
+\hline
+{\em current\+Capacity} & la capacidad actual de las monedas y billites \\
+\hline
+{\em count\+Money\+Norm} & el dinero por denominacion \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_modify_value_8h_a496ae77bf5f789e70c08a31a8dd004df}\label{_modify_value_8h_a496ae77bf5f789e70c08a31a8dd004df} 
+\index{ModifyValue.h@{ModifyValue.h}!setCurrentValues@{setCurrentValues}}
+\index{setCurrentValues@{setCurrentValues}!ModifyValue.h@{ModifyValue.h}}
+\doxysubsubsection{\texorpdfstring{setCurrentValues()}{setCurrentValues()}}
+{\footnotesize\ttfamily void set\+Current\+Values (\begin{DoxyParamCaption}\item[{int}]{Coin\+Norm\mbox{[}$\,$\mbox{]},  }\item[{int}]{Bill\+Norm\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+set\+Current\+Values Esta funcion solo es para obtener las variables primordiales en otro archivo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Coin\+Norm} & las denominaciones dadas por el usuario de las monedas \\
+\hline
+{\em Bill\+Norm} & las denominaciones dadas por el usuario de los billetes \\
+\hline
+{\em language} & el idioma elegido por el usuario \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69}\label{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69} 
+\index{ModifyValue.h@{ModifyValue.h}!setValue@{setValue}}
+\index{setValue@{setValue}!ModifyValue.h@{ModifyValue.h}}
+\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void set\+Value (\begin{DoxyParamCaption}\item[{int}]{setting,  }\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money,  }\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money\+By\+Div,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Capacity,  }\item[{int(\texorpdfstring{$\ast$}{*})}]{count\+Money\+Norm\mbox{[}5\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+set\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setting} & 0 = Coins, setting 1 = Bills \\
+\hline
+{\em piggy\+Bank\+Money} & puntero para la modificacion del dinero \\
+\hline
+{\em piggy\+Bank\+Money\+By\+Div} & puntero para la modificacion del dinero por denominacion \\
+\hline
+{\em current\+Capacity} & la capacidad actual de las monedas y billites \\
+\hline
+{\em count\+Money\+Norm} & el dinero por denominacion \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,103 @@
+\doxysection{C\+:/\+Users/\+PERSONAL/source/repos/\+Piggy\+Bank/\+Funcionalities.h File Reference}
+\hypertarget{_funcionalities_8h}{}\label{_funcionalities_8h}\index{C:/Users/PERSONAL/source/repos/PiggyBank/Funcionalities.h@{C:/Users/PERSONAL/source/repos/PiggyBank/Funcionalities.h}}
+
+
+Funciones necesarias pero no escenciales.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_funcionalities_8h_a55b940671ea9e884842f003d14a36f2f}{is\+The\+Value\+In\+The\+Norm}} (int value, int Norm\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em is\+The\+Value\+In\+The\+Norm verifica si el valor esta en la norma \end{DoxyCompactList}\item 
+\Hypertarget{_funcionalities_8h_afb7f5d96b025cf9fa9a6eac83be53afc}\label{_funcionalities_8h_afb7f5d96b025cf9fa9a6eac83be53afc} 
+void {\bfseries reset\+Piggy\+Bank} ()
+\begin{DoxyCompactList}\small\item\em reset\+Piggy\+Bank resetea los valores del archivo .csv por defecto \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funcionalities_8h_a3f58cadef3d75ba325cbdcc2815b5db4}{piggy\+Bank\+Creator}} (int \texorpdfstring{$\ast$}{*}max\+Capacity, int \texorpdfstring{$\ast$}{*}current\+Coin\+Norm, int \texorpdfstring{$\ast$}{*}current\+Bill\+Norm)
+\begin{DoxyCompactList}\small\item\em piggy\+Bank\+Creator Funcion encargada de crear una alcancia desde cero \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funcionalities_8h_a8c53ac18b377e3adec82e3dfc0fea692}{Recovery\+Cache}} (int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money, int \texorpdfstring{$\ast$}{*}current\+Coin\+Norm, int \texorpdfstring{$\ast$}{*}current\+Bill\+Norm, int \texorpdfstring{$\ast$}{*}max\+Capacity, int \texorpdfstring{$\ast$}{*}current\+Capacity, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money\+By\+Div, int(\texorpdfstring{$\ast$}{*}count\+Money\+Norm)\mbox{[}5\mbox{]})
+\begin{DoxyCompactList}\small\item\em Recovery\+Cache funcion encargada de restablecer la alcancia desde un archivo .csv. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funciones necesarias pero no escenciales. 
+
+\begin{DoxyVersion}{Version}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/06/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+no 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_funcionalities_8h_a55b940671ea9e884842f003d14a36f2f}\label{_funcionalities_8h_a55b940671ea9e884842f003d14a36f2f} 
+\index{Funcionalities.h@{Funcionalities.h}!isTheValueInTheNorm@{isTheValueInTheNorm}}
+\index{isTheValueInTheNorm@{isTheValueInTheNorm}!Funcionalities.h@{Funcionalities.h}}
+\doxysubsubsection{\texorpdfstring{isTheValueInTheNorm()}{isTheValueInTheNorm()}}
+{\footnotesize\ttfamily bool is\+The\+Value\+In\+The\+Norm (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{int}]{Norm\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+is\+The\+Value\+In\+The\+Norm verifica si el valor esta en la norma 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Norm\mbox{[}$\,$\mbox{]}} & array usado para evaluar \\
+\hline
+{\em value} & el valor usado para evaluar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+V si esta en la norma; F si no lo esta 
+\end{DoxyReturn}
+\Hypertarget{_funcionalities_8h_a3f58cadef3d75ba325cbdcc2815b5db4}\label{_funcionalities_8h_a3f58cadef3d75ba325cbdcc2815b5db4} 
+\index{Funcionalities.h@{Funcionalities.h}!piggyBankCreator@{piggyBankCreator}}
+\index{piggyBankCreator@{piggyBankCreator}!Funcionalities.h@{Funcionalities.h}}
+\doxysubsubsection{\texorpdfstring{piggyBankCreator()}{piggyBankCreator()}}
+{\footnotesize\ttfamily void piggy\+Bank\+Creator (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{max\+Capacity,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Coin\+Norm,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Bill\+Norm }\end{DoxyParamCaption})}
+
+
+
+piggy\+Bank\+Creator Funcion encargada de crear una alcancia desde cero 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Capacity} & un puntero para editar el contenido \\
+\hline
+{\em current\+Coin\+Norm} & un puntero para editar el contenido \\
+\hline
+{\em current\+Bill\+Norm} & un puntero para editar el contenido \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_funcionalities_8h_a8c53ac18b377e3adec82e3dfc0fea692}\label{_funcionalities_8h_a8c53ac18b377e3adec82e3dfc0fea692} 
+\index{Funcionalities.h@{Funcionalities.h}!RecoveryCache@{RecoveryCache}}
+\index{RecoveryCache@{RecoveryCache}!Funcionalities.h@{Funcionalities.h}}
+\doxysubsubsection{\texorpdfstring{RecoveryCache()}{RecoveryCache()}}
+{\footnotesize\ttfamily void Recovery\+Cache (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Coin\+Norm,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Bill\+Norm,  }\item[{int \texorpdfstring{$\ast$}{*}}]{max\+Capacity,  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+Capacity,  }\item[{int \texorpdfstring{$\ast$}{*}}]{piggy\+Bank\+Money\+By\+Div,  }\item[{int(\texorpdfstring{$\ast$}{*})}]{count\+Money\+Norm\mbox{[}5\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Recovery\+Cache funcion encargada de restablecer la alcancia desde un archivo .csv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piggy\+Bank\+Money} & un puntero para editar el contenido \\
+\hline
+{\em current\+Coin\+Norm} & un puntero para editar el contenido \\
+\hline
+{\em current\+Bill\+Norm} & un puntero para editar el contenido \\
+\hline
+{\em max\+Capacity} & un puntero para editar el contenido \\
+\hline
+{\em current\+Capacity} & un puntero para editar el contenido \\
+\hline
+{\em piggy\+Bank\+Money\+By\+Div} & un puntero para editar el contenido \\
+\hline
+{\em count\+Money\+Norm} & un puntero para editar el contenido \\
+\hline
+\end{DoxyParams}
