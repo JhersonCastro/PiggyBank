@@ -34,6 +34,7 @@ int getNumber(const char* prmEtiqueta);
 * @brief isDuplicateValue verifica si en el array pasado por parametro es igual al valor dado por el parametro.
 * @param array el arreglo a evaluar
 * @param value el valor para evaluar
+* @param si<e la capacidad del array
 * @return retorna verdadero si hay una equivalencia, falso si no
 */
 bool isDuplicateValue(int array[], int value, int size);

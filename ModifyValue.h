@@ -7,7 +7,7 @@
 * @brief Modifica el dinero (agrega o elimina)
 */
 /**
-* @brief setValue Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega
+* @brief setValue Pide el valor y verifica si esta en la norma de las denominaciones, ademas, si la alcancia no este llena, lo agrega
 * @param setting 0 = Coins, setting 1 = Bills
 * @param piggyBankMoney puntero para la modificacion del dinero
 * @param piggyBankMoneyByDiv puntero para la modificacion del dinero por denominacion
@@ -16,16 +16,16 @@
 */
 void setValue(int setting, int* piggyBankMoney, int* piggyBankMoneyByDiv, int* currentCapacity, int(*countMoneyNorm)[5]);
 /**
-* @brief setCurrentValues Esta funcion solo es para obtener las variables primordiales en otro archivo
+* @brief setCurrentValues Esta funcion solo es para obtener las variables primordiales de otro archivo (PiggyBank.c)
 * @param CoinNorm las denominaciones dadas por el usuario de las monedas
 * @param BillNorm las denominaciones dadas por el usuario de los billetes
-* @param language el idioma elegido por el usuario
 */
 void setCurrentValues(int CoinNorm[], int BillNorm[]);
 /**
 * @brief removeValue Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este vacia, lo elimina
 * @param setting 0 = Coins, setting 1 = Bills
 * @param piggyBankMoney puntero para la modificacion del dinero
+* @param piggyBankMoneyByDiv almacena el dinero determinando si es una moneda o un billete
 * @param currentCapacity la capacidad actual de las monedas y billites
 * @param countMoneyNorm el dinero por denominacion
 */

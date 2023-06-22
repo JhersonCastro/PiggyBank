@@ -1,0 +1,52 @@
+\doxysection{C\+:/\+Users/\+PERSONAL/source/repos/\+Piggy\+Bank/transactions.h File Reference}
+\hypertarget{transactions_8h}{}\label{transactions_8h}\index{C:/Users/PERSONAL/source/repos/PiggyBank/transactions.h@{C:/Users/PERSONAL/source/repos/PiggyBank/transactions.h}}
+
+
+Funciones de Lectura y escritura sobre archivos .csv.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{transactions_8h_a9b5e7adc877d7eaa0feba4251f204a49}\label{transactions_8h_a9b5e7adc877d7eaa0feba4251f204a49} 
+void {\bfseries read\+And\+Print\+Transactions} ()
+\begin{DoxyCompactList}\small\item\em read\+And\+Print\+Transactions esta funcion lee e imprime por consola las transacciones que se ubican en el archivo transactions.\+txt \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{transactions_8h_af057d2ef54bb8f03876b31d13f4d4f4d}{save\+Transaction}} (char \texorpdfstring{$\ast$}{*}label, int amount)
+\begin{DoxyCompactList}\small\item\em save\+Transaction esta funcion guarda la hora exacta de la transaccion,la descripcion del movimiento y la cantidad ingresada o retirada en el archivo transactions.\+txt \end{DoxyCompactList}\item 
+\Hypertarget{transactions_8h_ae8cc80ede0213cf67a33c73b46a4d2fb}\label{transactions_8h_ae8cc80ede0213cf67a33c73b46a4d2fb} 
+void {\bfseries reset\+\_\+transactions} ()
+\begin{DoxyCompactList}\small\item\em reset\+\_\+transactions esta funcion se encarga de limpiar las transacciones guardadas en el archivo transactions.\+txt \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Funciones de Lectura y escritura sobre archivos .csv. 
+
+\begin{DoxyVersion}{Version}
+1.\+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/06/2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+no 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{transactions_8h_af057d2ef54bb8f03876b31d13f4d4f4d}\label{transactions_8h_af057d2ef54bb8f03876b31d13f4d4f4d} 
+\index{transactions.h@{transactions.h}!saveTransaction@{saveTransaction}}
+\index{saveTransaction@{saveTransaction}!transactions.h@{transactions.h}}
+\doxysubsubsection{\texorpdfstring{saveTransaction()}{saveTransaction()}}
+{\footnotesize\ttfamily void save\+Transaction (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{label,  }\item[{int}]{amount }\end{DoxyParamCaption})}
+
+
+
+save\+Transaction esta funcion guarda la hora exacta de la transaccion,la descripcion del movimiento y la cantidad ingresada o retirada en el archivo transactions.\+txt 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & una descripcion breve y detallada del movimiento \\
+\hline
+{\em amount} & informa los ingresos y extracciones de monedas y billetes \\
+\hline
+\end{DoxyParams}

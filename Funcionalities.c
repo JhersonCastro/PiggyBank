@@ -38,6 +38,7 @@ void resetPiggyBank() {
 }
 void piggyBankCreator(int* maxCapacity, int* currentCoinNorm, int* currentBillNorm) {
 	resetPiggyBank();
+	system("cls");
 	char cadena[50];
 	char valor[50];
 	int buffer = 0;
@@ -48,7 +49,7 @@ void piggyBankCreator(int* maxCapacity, int* currentCoinNorm, int* currentBillNo
 	do
 	{
 		buffer = getNumber(" ");
-		if (buffer >= 0 && buffer < INT_MAX) {
+		if (buffer > 0 && buffer < INT_MAX) {
 			maxCapacity[Coin] = buffer;
 			snprintf(cadena, sizeof(cadena), "%d", maxCapacity[Coin]);
 			editByID("max_coin_capacity", cadena);
@@ -70,7 +71,7 @@ void piggyBankCreator(int* maxCapacity, int* currentCoinNorm, int* currentBillNo
 		printf("El limite fue alcanzado o se ingreso un numero negativo, intentalo de nuevo");
 	} while (true);
 
-bool isContinue = true;
+	bool isContinue = true;
 	for (int i = 0; i < 5; i++) {
 		int currentValue = 0;
 		if (isContinue) {
@@ -111,6 +112,7 @@ bool isContinue = true;
 		}
 		currentBillNorm[i] = currentValue;
 	}
+	system("cls");
 }
 void RecoveryCache(int* piggyBankMoney, int* currentCoinNorm, int* currentBillNorm,int* maxCapacity, int* currentCapacity,int* piggyBankMoneyByDiv, int(*countMoneyNorm)[5]) {
 	row_d* dataRows = (row_d*)malloc(MAX_ROWS * sizeof(row_d));

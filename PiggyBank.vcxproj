@@ -148,10 +148,10 @@
     <ClInclude Include="transactions.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data.csv" />
+    <Text Include="transactions.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="transactions.txt" />
+    <None Include="data.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,9 +9,9 @@ Modifica el dinero (agrega o elimina)
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69}{set\+Value}} (int setting, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money\+By\+Div, int \texorpdfstring{$\ast$}{*}current\+Capacity, int(\texorpdfstring{$\ast$}{*}count\+Money\+Norm)\mbox{[}5\mbox{]})
-\begin{DoxyCompactList}\small\item\em set\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em set\+Value Pide el valor y verifica si esta en la norma de las denominaciones, ademas, si la alcancia no este llena, lo agrega \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_modify_value_8h_a496ae77bf5f789e70c08a31a8dd004df}{set\+Current\+Values}} (int Coin\+Norm\mbox{[}$\,$\mbox{]}, int Bill\+Norm\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em set\+Current\+Values Esta funcion solo es para obtener las variables primordiales en otro archivo \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em set\+Current\+Values Esta funcion solo es para obtener las variables primordiales de otro archivo (Piggy\+Bank.\+c) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_modify_value_8h_a4886504c553a593fc9751058c2f66652}{remove\+Value}} (int setting, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money, int \texorpdfstring{$\ast$}{*}piggy\+Bank\+Money\+By\+Div, int(\texorpdfstring{$\ast$}{*}count\+Money\+Norm)\mbox{[}5\mbox{]}, int \texorpdfstring{$\ast$}{*}current\+Capacity)
 \begin{DoxyCompactList}\small\item\em remove\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este vacia, lo elimina \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -47,6 +47,8 @@ remove\+Value Pide el valor y si esta en la norma de las denominaciones, ademas 
 \hline
 {\em piggy\+Bank\+Money} & puntero para la modificacion del dinero \\
 \hline
+{\em piggy\+Bank\+Money\+By\+Div} & almacena el dinero determinando si es una moneda o un billete \\
+\hline
 {\em current\+Capacity} & la capacidad actual de las monedas y billites \\
 \hline
 {\em count\+Money\+Norm} & el dinero por denominacion \\
@@ -60,15 +62,13 @@ remove\+Value Pide el valor y si esta en la norma de las denominaciones, ademas 
 
 
 
-set\+Current\+Values Esta funcion solo es para obtener las variables primordiales en otro archivo 
+set\+Current\+Values Esta funcion solo es para obtener las variables primordiales de otro archivo (Piggy\+Bank.\+c) 
 
 
 \begin{DoxyParams}{Parameters}
 {\em Coin\+Norm} & las denominaciones dadas por el usuario de las monedas \\
 \hline
 {\em Bill\+Norm} & las denominaciones dadas por el usuario de los billetes \\
-\hline
-{\em language} & el idioma elegido por el usuario \\
 \hline
 \end{DoxyParams}
 \Hypertarget{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69}\label{_modify_value_8h_aca00058adbbc66a73a05190cd1207d69} 
@@ -79,7 +79,7 @@ set\+Current\+Values Esta funcion solo es para obtener las variables primordiale
 
 
 
-set\+Value Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega 
+set\+Value Pide el valor y verifica si esta en la norma de las denominaciones, ademas, si la alcancia no este llena, lo agrega 
 
 
 \begin{DoxyParams}{Parameters}

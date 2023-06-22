@@ -1,5 +1,4 @@
-18:21:00: Se ha ingresado (billete): 20000
-18:21:18: Se ha removido (billete): 20000
-18:21:26: Se ha ingresado (moneda): 50
-18:21:29: Se ha ingresado (moneda): 50
-18:21:33: Se ha ingresado (moneda): 50
+15:05:44: Se ha ingresado (moneda): 500
+15:05:50: Se ha ingresado (moneda): 500
+15:05:56: Se ha ingresado (billete): 2000
+15:06:12: Se ha removido (moneda): 500

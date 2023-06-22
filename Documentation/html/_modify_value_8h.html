@@ -104,10 +104,10 @@ $(document).ready(function(){initNavTree('_modify_value_8h.html',''); initResiza
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aca00058adbbc66a73a05190cd1207d69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_modify_value_8h.html#aca00058adbbc66a73a05190cd1207d69">setValue</a> (int setting, int *piggyBankMoney, int *piggyBankMoneyByDiv, int *currentCapacity, int(*countMoneyNorm)[5])</td></tr>
-<tr class="memdesc:aca00058adbbc66a73a05190cd1207d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">setValue Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega  <br /></td></tr>
+<tr class="memdesc:aca00058adbbc66a73a05190cd1207d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">setValue Pide el valor y verifica si esta en la norma de las denominaciones, ademas, si la alcancia no este llena, lo agrega  <br /></td></tr>
 <tr class="separator:aca00058adbbc66a73a05190cd1207d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a496ae77bf5f789e70c08a31a8dd004df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_modify_value_8h.html#a496ae77bf5f789e70c08a31a8dd004df">setCurrentValues</a> (int CoinNorm[], int BillNorm[])</td></tr>
-<tr class="memdesc:a496ae77bf5f789e70c08a31a8dd004df"><td class="mdescLeft">&#160;</td><td class="mdescRight">setCurrentValues Esta funcion solo es para obtener las variables primordiales en otro archivo  <br /></td></tr>
+<tr class="memdesc:a496ae77bf5f789e70c08a31a8dd004df"><td class="mdescLeft">&#160;</td><td class="mdescRight">setCurrentValues Esta funcion solo es para obtener las variables primordiales de otro archivo (PiggyBank.c)  <br /></td></tr>
 <tr class="separator:a496ae77bf5f789e70c08a31a8dd004df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4886504c553a593fc9751058c2f66652"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_modify_value_8h.html#a4886504c553a593fc9751058c2f66652">removeValue</a> (int setting, int *piggyBankMoney, int *piggyBankMoneyByDiv, int(*countMoneyNorm)[5], int *currentCapacity)</td></tr>
 <tr class="memdesc:a4886504c553a593fc9751058c2f66652"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeValue Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este vacia, lo elimina  <br /></td></tr>
@@ -168,6 +168,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">setting</td><td>0 = Coins, setting 1 = Bills </td></tr>
     <tr><td class="paramname">piggyBankMoney</td><td>puntero para la modificacion del dinero </td></tr>
+    <tr><td class="paramname">piggyBankMoneyByDiv</td><td>almacena el dinero determinando si es una moneda o un billete </td></tr>
     <tr><td class="paramname">currentCapacity</td><td>la capacidad actual de las monedas y billites </td></tr>
     <tr><td class="paramname">countMoneyNorm</td><td>el dinero por denominacion </td></tr>
   </table>
@@ -202,12 +203,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>setCurrentValues Esta funcion solo es para obtener las variables primordiales en otro archivo </p>
+<p>setCurrentValues Esta funcion solo es para obtener las variables primordiales de otro archivo (PiggyBank.c) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">CoinNorm</td><td>las denominaciones dadas por el usuario de las monedas </td></tr>
     <tr><td class="paramname">BillNorm</td><td>las denominaciones dadas por el usuario de los billetes </td></tr>
-    <tr><td class="paramname">language</td><td>el idioma elegido por el usuario </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,7 +258,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>setValue Pide el valor y si esta en la norma de las denominaciones, ademas de que la alcancia no este llena, lo agrega </p>
+<p>setValue Pide el valor y verifica si esta en la norma de las denominaciones, ademas, si la alcancia no este llena, lo agrega </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">setting</td><td>0 = Coins, setting 1 = Bills </td></tr>
@@ -277,7 +277,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_8ad13f2fbcf34b961bac8a85f30ff099.html">PERSONAL</a></li><li class="navelem"><a class="el" href="dir_86b9e731e1d34538181a6acb5a90b80a.html">source</a></li><li class="navelem"><a class="el" href="dir_2d445bc67c6214d2d087050efce057e9.html">repos</a></li><li class="navelem"><a class="el" href="dir_d083e225ecf2556b357f41dbf7ff842b.html">PiggyBank</a></li><li class="navelem"><a class="el" href="_modify_value_8h.html">ModifyValue.h</a></li>
+    <li class="navelem"><a class="el" href="dir_e6bb53534ac0e427887cf7a94c0c004e.html">C:</a></li><li class="navelem"><a class="el" href="dir_8ceffd4ee35c3518d4e8bdc7e638efe8.html">Users</a></li><li class="navelem"><a class="el" href="dir_432431d548258eba07d74293bd4cd50f.html">PERSONAL</a></li><li class="navelem"><a class="el" href="dir_faa2ea50faa075948fcb127a2ab97c6b.html">source</a></li><li class="navelem"><a class="el" href="dir_7d49935388393cf485689b192e360069.html">repos</a></li><li class="navelem"><a class="el" href="dir_a7518c85e218fde808a3ade2f0d2a027.html">PiggyBank</a></li><li class="navelem"><a class="el" href="_modify_value_8h.html">ModifyValue.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>

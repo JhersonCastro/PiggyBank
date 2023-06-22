@@ -40,8 +40,10 @@ void piggyBank() {
 			menu[1](opc == 3 ? 0 : 1);
 		else if (opc >= 5 && opc <= 12)
 			menu[2](opc - 5);
-		else if (opc == 13)
+		else if (opc == 13) {
 			readAndPrintTransactions();
+			printf("Haha the funny number\n");
+		}
 		else if (opc != 14)
 			printf("Invalid number entered! \n");
 		else
@@ -49,5 +51,5 @@ void piggyBank() {
 		system("pause");
 		system("cls");
 	} while (true);
-	printf("Haha the funny number\n");
+	printf("Salio de la aplicacion");
 }

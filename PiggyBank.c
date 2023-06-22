@@ -19,7 +19,8 @@ int currentCoinNorm[5] = { 0, 0, 0, 0, 0 };
 int defaultCoinNorm[5] = { 50, 100, 200, 500, 1000 };
 int currentBillNorm[5] = { 0, 0, 0, 0, 0 };
 int defaultBillNorm[5] = { 2000, 5000, 10000, 20000, 50000 };
-int countMoneyNorm[2][5] = {/*Coins*/{ 0, 0, 0, 0, 0 },/*Bills*/{ 0, 0, 0, 0, 0 } };
+int countMoneyNorm[2][5] = {/*Coins*/{ 0, 0, 0, 0, 0 },
+							/*Bills*/{ 0, 0, 0, 0, 0 } };
 int Coin = 0, Bill = 1;
 #pragma endregion
 #pragma region Funcs
@@ -51,10 +52,11 @@ void dimensionPiggyBank() {
 	qsort(currentBillNorm, 5, sizeof(int), compareIntegers);
 	setCurrentValues(currentCoinNorm, currentBillNorm);
 	editByID("is_a_new_piggybank", "true");
-
+	system("cls");
 	free(dataRows);
 }
 void printStats(int setting) {
+	system("cls");
 	switch (setting)
 	{
 	case 0:
