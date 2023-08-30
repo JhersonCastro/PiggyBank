@@ -61,5 +61,8 @@
     <None Include="trans.csv">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="data.csv">
+      <Filter>Archivos de recursos</Filter>
+    </None>
   </ItemGroup>
 </Project>

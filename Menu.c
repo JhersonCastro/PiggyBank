@@ -3,8 +3,8 @@
 #include "PiggyBank.h"
 #define NUM_OPTIONS 3
 static char* lang = "es";
-row_t rows[MAX_ROWS];
-static int row_count;
+row_t transRows[MAX_ROWS];
+static int transRowCount;
 
 typedef void (*func_ptr)(int);
 func_ptr menu[NUM_OPTIONS] = {	setValue,
@@ -12,22 +12,23 @@ func_ptr menu[NUM_OPTIONS] = {	setValue,
 								printStats};
 
 void printMenu() {
-	row_count = read_csv("trans.csv", rows);
+	transRowCount = readTrans_csv(transRows);
 	char* MenuItems[] = { 
-		get_text(find_row_by_id(rows, row_count, "enter_coin"), lang),
-		get_text(find_row_by_id(rows, row_count, "enter_bill"), lang),
-		get_text(find_row_by_id(rows, row_count, "extract_coin"), lang),
-		get_text(find_row_by_id(rows, row_count, "extract_bill"), lang),
-		get_text(find_row_by_id(rows, row_count, "present_balances_and_counts"), lang),
-		get_text(find_row_by_id(rows, row_count, "coin_balances_by_denomination"), lang),
-		get_text(find_row_by_id(rows, row_count, "coin_counts_by_denomination"), lang),
-		get_text(find_row_by_id(rows, row_count, "bill_balances_by_denomination"), lang),
-		get_text(find_row_by_id(rows, row_count, "inventories"), lang),
-		get_text(find_row_by_id(rows, row_count, "bill_inventories"), lang),
-		get_text(find_row_by_id(rows, row_count, "coin_inventories"), lang),
-		get_text(find_row_by_id(rows, row_count, "exit_option"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "enter_coin"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "enter_bill"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "extract_coin"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "extract_bill"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "present_balances_and_counts"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "coin_balances_by_denomination"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "coin_counts_by_denomination"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "bill_balances_by_denomination"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "bill_counts_by_denomination"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "inventories"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "bill_inventories"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "coin_inventories"), lang),
+		get_text(find_row_by_id(transRows, transRowCount, "exit_option"), lang),
 							};
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 13; i++)
 		printf("%s\n", MenuItems[i]);
 }
 void piggyBank(char* language){
@@ -37,7 +38,7 @@ void piggyBank(char* language){
 	do
 	{
 		printMenu();
-		opc = getNumber(get_text(find_row_by_id(rows, row_count, "option_choice"), lang));
+		opc = getNumber(get_text(find_row_by_id(transRows, transRowCount, "option_choice"), lang));
 		if (opc == 1 || opc == 2)
 			menu[0](opc == 1 ? 0 : 1);
 		else if (opc == 3 || opc == 4)
@@ -45,8 +46,8 @@ void piggyBank(char* language){
 		else if (opc >= 5 && opc <= 12)
 			menu[2](opc - 5);
 		else
-			printf("%s", get_text(find_row_by_id(rows, row_count, "invalid_number"), lang));
+			printf("%s", get_text(find_row_by_id(transRows, transRowCount, "invalid_number"), lang));
 	} while (opc != 13);
 
-	printf("%s", get_text(find_row_by_id(rows, row_count, "funny_number"), lang));
+	printf("%s", get_text(find_row_by_id(transRows, transRowCount, "funny_number"), lang));
 }

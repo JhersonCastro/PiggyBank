@@ -1,5 +1,7 @@
 #include <stdbool.h>
+#include <stdlib.h>
 #include <limits.h>
+#include "csv.h"
 #include "Funcionalities.h"
 
 bool isTheValueInTheNorm(int value, int Norm[]) {
@@ -51,7 +53,29 @@ int* min_combination(int coins[], int bills[], int value) {
     free(coin_used);
 
     return result;
-}/*
+}
+void resetPiggyBank() {
+    editByID("money", "0");
+    editByID("moneyByCoins", "0");
+    editByID("moneyByBills", "0");
+    editByID("max_bill_capacity", "0");
+    editByID("max_coin_capacity", "0");
+    editByID("total_bills_entered", "0");
+    editByID("total_coins_entered", "0");
+    char cadena[50];
+    for (size_t i = 0; i < 5; i++)
+    {
+        sprintf_s(cadena, sizeof(cadena), "coins_entered[%d]", i);
+        editByID(cadena, "0");
+        sprintf_s(cadena, sizeof(cadena), "bills_entered[%d]", i);
+        editByID(cadena, "0");
+        sprintf_s(cadena, sizeof(cadena), "currentCoinNorm[%d]", i);
+        editByID(cadena, "0");
+        sprintf_s(cadena, sizeof(cadena), "currentBillNorm[%d]", i);
+        editByID(cadena, "0");
+    }
+}
+/*
 int minValueToMoney(int currentNorm[], int value) {
 
 	int currentValue = 0;
